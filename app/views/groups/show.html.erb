@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Books:</strong>
+  <%= @group.books %>
+</p>
+
+<p>
+  <strong>Penalty:</strong>
+  <%= @group.penalty %>
+</p>
+
+<p>
+  <strong>Returnday:</strong>
+  <%= @group.returnDay %>
+</p>
+
+<p>
+  <strong>Renovation:</strong>
+  <%= @group.renovation %>
+</p>
+
+<p>
+  <strong>Vigencystar:</strong>
+  <%= @group.vigencyStar %>
+</p>
+
+<p>
+  <strong>Vigencyend:</strong>
+  <%= @group.vigencyEnd %>
+</p>
+
+<p>
+  <strong>Library:</strong>
+  <%= @group.library %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
