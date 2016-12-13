@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fullname:</strong>
+  <%= @responsable.fullname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @responsable.email %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @responsable.telephone %>
+</p>
+
+<p>
+  <strong>Library:</strong>
+  <%= @responsable.library %>
+</p>
+
+<%= link_to 'Edit', edit_responsable_path(@responsable) %> |
+<%= link_to 'Back', responsables_path %>
