@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: MyString
+  fullname: MyString
+  group_id: 
+  scool_id: 
+  email: MyString
+  address: MyString
+  colony: MyString
+  city: MyString
+  state: MyString
+  cp: MyString
+  telephone: MyString
+  celular: MyString
+  picture: 
+  notes: MyText
+  vigencyStart: 2016-12-14
+  vigencyEnd: 2016-12-14
+  age: 1
+  gurantor: MyText
+
+two:
+  account: MyString
+  fullname: MyString
+  group_id: 
+  scool_id: 
+  email: MyString
+  address: MyString
+  colony: MyString
+  city: MyString
+  state: MyString
+  cp: MyString
+  telephone: MyString
+  celular: MyString
+  picture: 
+  notes: MyText
+  vigencyStart: 2016-12-14
+  vigencyEnd: 2016-12-14
+  age: 1
+  gurantor: MyText

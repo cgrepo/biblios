@@ -1,0 +1,2 @@
+json.extract! subscriptor, :id, :account, :fullname, :group_id, :scool_id, :email, :address, :colony, :city, :state, :cp, :telephone, :celular, :picture, :notes, :vigencyStart, :vigencyEnd, :age, :gurantor, :created_at, :updated_at
+json.url subscriptor_url(subscriptor, format: :json)

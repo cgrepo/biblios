@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Subscriptors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Fullname</th>
+      <th>Group</th>
+      <th>Scool</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Colony</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cp</th>
+      <th>Telephone</th>
+      <th>Celular</th>
+      <th>Picture</th>
+      <th>Notes</th>
+      <th>Vigencystart</th>
+      <th>Vigencyend</th>
+      <th>Age</th>
+      <th>Gurantor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subscriptors.each do |subscriptor| %>
+      <tr>
+        <td><%= subscriptor.account %></td>
+        <td><%= subscriptor.fullname %></td>
+        <td><%= subscriptor.group %></td>
+        <td><%= subscriptor.scool %></td>
+        <td><%= subscriptor.email %></td>
+        <td><%= subscriptor.address %></td>
+        <td><%= subscriptor.colony %></td>
+        <td><%= subscriptor.city %></td>
+        <td><%= subscriptor.state %></td>
+        <td><%= subscriptor.cp %></td>
+        <td><%= subscriptor.telephone %></td>
+        <td><%= subscriptor.celular %></td>
+        <td><%= subscriptor.picture %></td>
+        <td><%= subscriptor.notes %></td>
+        <td><%= subscriptor.vigencyStart %></td>
+        <td><%= subscriptor.vigencyEnd %></td>
+        <td><%= subscriptor.age %></td>
+        <td><%= subscriptor.gurantor %></td>
+        <td><%= link_to 'Show', subscriptor %></td>
+        <td><%= link_to 'Edit', edit_subscriptor_path(subscriptor) %></td>
+        <td><%= link_to 'Destroy', subscriptor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscriptor', new_subscriptor_path %>

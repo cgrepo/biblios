@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :subscriptors
   resources :groups
   resources :schools
   resources :responsables

@@ -1,0 +1,1 @@
+json.array! @subscriptors, partial: 'subscriptors/subscriptor', as: :subscriptor

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213214703) do
+ActiveRecord::Schema.define(version: 20161214174922) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "description"
@@ -59,6 +59,32 @@ ActiveRecord::Schema.define(version: 20161213214703) do
   end
 
   add_index "schools", ["library_id"], name: "index_schools_on_library_id"
+
+  create_table "subscriptors", force: :cascade do |t|
+    t.string   "account"
+    t.string   "fullname"
+    t.integer  "group_id"
+    t.integer  "scool_id"
+    t.string   "email"
+    t.string   "address"
+    t.string   "colony"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cp"
+    t.string   "telephone"
+    t.string   "celular"
+    t.binary   "picture"
+    t.text     "notes"
+    t.date     "vigencyStart"
+    t.date     "vigencyEnd"
+    t.integer  "age"
+    t.text     "gurantor"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "subscriptors", ["group_id"], name: "index_subscriptors_on_group_id"
+  add_index "subscriptors", ["scool_id"], name: "index_subscriptors_on_scool_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
