@@ -1,41 +1,57 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Books</th>
-      <th>Penalty</th>
-      <th>Returnday</th>
-      <th>Renovation</th>
-      <th>Vigencystar</th>
-      <th>Vigencyend</th>
-      <th>Library</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.description %></td>
-        <td><%= group.books %></td>
-        <td><%= group.penalty %></td>
-        <td><%= group.returnDay %></td>
-        <td><%= group.renovation %></td>
-        <td><%= group.vigencyStar %></td>
-        <td><%= group.vigencyEnd %></td>
-        <td><%= group.library %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12 col-md-12'>
+      <p id="notice"><%= notice %></p>
+      <h1>Listado de Grupos</h1>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-12'>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Descripcion</th>
+              <th>Libros</th>
+              <th>Penalizacion</th>
+              <th>Retorno</th>
+              <th>Renovacion</th>
+              <th>Inicio_vicencia</th>
+              <th>Fin_Vigencia</th>
+              <th>Biblioteca</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <td><%= group.description %></td>
+                <td><%= group.books %></td>
+                <td><%= group.penalty %></td>
+                <td><%= group.returnDay %></td>
+                <td><%= group.renovation %></td>
+                <td><%= group.vigencyStar %></td>
+                <td><%= group.vigencyEnd %></td>
+                <td><%#= group.library %></td>
+                <td><%= link_to '', group, title:'mostrar', rel:'tooltip', 
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-file' %></td>
+                <td><%= link_to '', edit_group_path(group), title:'editar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-edit' %></td>
+                <td><%= link_to '', group, method: :delete, data: { confirm: 'Esta usted seguro?' },
+                    title:'borrar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-trash'%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= link_to 'Nuevo Grupo', new_group_path,class:'btn btn-xs btn-default btn-block' %>
+    </div>
+  </div>
+</div>

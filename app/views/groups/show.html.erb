@@ -1,44 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-8'>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @group.description %>
+      </p>
+      <p>
+        <strong>Libros:</strong>
+        <%= @group.books %>
+      </p>
+      <p>
+        <strong>Penalizacion:</strong>
+        <%= @group.penalty %>
+      </p>
+      <p>
+        <strong>Dia de Retorno:</strong>
+        <%= @group.returnDay %>
+      </p>
+      <p>
+        <strong>Renovacion:</strong>
+        <%= @group.renovation %>
+      </p>
+      <p>
+        <strong>Inicio_vicencia:</strong>
+        <%= @group.vigencyStar %>
+      </p>
+      <p>
+        <strong>Fin_Vigencia:</strong>
+        <%= @group.vigencyEnd %>
+      </p>
+      <p>
+        <strong>Biblioteca:</strong>
+        <%#= @group.library %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Editar', edit_group_path(@group),class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Regresar', groups_path,class:'btn btn-md btn-block be-purple_strong' %>  
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
-
-<p>
-  <strong>Books:</strong>
-  <%= @group.books %>
-</p>
-
-<p>
-  <strong>Penalty:</strong>
-  <%= @group.penalty %>
-</p>
-
-<p>
-  <strong>Returnday:</strong>
-  <%= @group.returnDay %>
-</p>
-
-<p>
-  <strong>Renovation:</strong>
-  <%= @group.renovation %>
-</p>
-
-<p>
-  <strong>Vigencystar:</strong>
-  <%= @group.vigencyStar %>
-</p>
-
-<p>
-  <strong>Vigencyend:</strong>
-  <%= @group.vigencyEnd %>
-</p>
-
-<p>
-  <strong>Library:</strong>
-  <%= @group.library %>
-</p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

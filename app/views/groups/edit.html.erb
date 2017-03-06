@@ -1,6 +1,19 @@
-<h1>Editing Group</h1>
-
+<div class='container'>
+    <div class='row'>
+        <div class='col-xs-12 col-md-12'>
+            <h1>Editar Grupo</h1>
+        </div>
+    </div>
+</div>
 <%= render 'form' %>
-
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<div class='container'>
+    <div class='row'>
+        <div class='col-xs-4 col-md-4'></div>
+        <div class='col-xs-2 col-md-2'>
+            <%= link_to 'Mostrar', @group, class:'btn btn-md btn-block be-purple_strong' %>
+        </div>
+        <div class='col-xs-2 col-md-2'>
+            <%= link_to 'Regresar', groups_path, class:'btn btn-md btn-block be-purple_strong' %>
+        </div>
+    </div>
+</div>

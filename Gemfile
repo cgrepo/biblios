@@ -24,6 +24,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-turbolinks'
 gem 'responders'
 gem 'jquery-ui-rails'
+gem 'bootstrap_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -41,5 +42,5 @@ end
 group :production do
  gem 'pg'
  gem 'rails_12factor'
-
+ gem 'puma'
 end

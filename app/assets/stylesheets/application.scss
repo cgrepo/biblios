@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui/datepicker
+ *= require rails_bootstrap_forms
  *= require_tree .
  *= require_self
  */
@@ -23,12 +25,15 @@ html, body {
   margin: 0;
   padding: 0;
 }
+h1 {text-align: center;}
+
+a,a:visited{ color: inherit !important; 
+}
 table {
   border-collapse: separate;
   border-spacing: 0 5px;
 
 }
-
 $tcolor: #414141; $fcolor: #ECF0F1;
 thead th {
   background-color: $tcolor;
@@ -38,13 +43,11 @@ tbody td {
   background-color: #EEEEEE;
   font-size: 12px;
 }
-
 tr td:first-child,
 tr th:first-child {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-
 tr td:last-child,
 tr th:last-child {
   border-top-right-radius: 6px;
@@ -53,8 +56,6 @@ tr th:last-child {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #8a9da7;
 }
-
-//COLORS
 .be-purple_strong{
   background-color: #89589C;
   color: #F6FFFF;
@@ -62,8 +63,8 @@ tr th:last-child {
 .be-windows_gray7{
   background-color: #B0BDC9;
 }
-
 .be-border_heroku{
+  background: #89589C;
   background-color: #AF9BC5;
   color: #F6FFFF;
 }
@@ -71,7 +72,10 @@ tr th:last-child {
   background-color: #7958A9;
   color: #F6FFFF;
 }
-
+.be-round_ligth_gray{
+  background-color: #efefef;
+  color: black; 
+}
 .row {
     margin-top: 20px;   
 }
@@ -86,7 +90,6 @@ tr th:last-child {
     color: #FFF;
     text-align: center;  
 }
-
 .round.hollow {
     display: inline-block;
     height: 30px;
@@ -101,7 +104,6 @@ tr th:last-child {
     -moz-box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.75);
 }
-
 .round.round-sm {
     height: 20px;
     width: 20px;
@@ -110,7 +112,6 @@ tr th:last-child {
     border-radius: 10px;
     font-size: 0.7em;
 }
-
 .round.round-lg {
     height: 40px;
     width: 40px;
@@ -119,19 +120,15 @@ tr th:last-child {
     border-radius: 20px;
     font-size: 1.5em;
 }
-
 .round.blue {
     background-color: #3EA6CE;
 }
-
 .round.orange {
     background-color: #FF6701;
 }
-
 .round.green {
     background-color: #42A129;
 }
-
 .round.hollow.blue {
     color: #3EA6CE;   
     background-color: #FFF;    
@@ -139,7 +136,6 @@ tr th:last-child {
     -moz-box-shadow: 0px 0px 0px 3px #3EA6CE;
     box-shadow: 0px 0px 0px 3px #3EA6CE;
 }
-
 .round.hollow.orange {
     color: #FF6701;
     background-color: #FFF;    
@@ -147,10 +143,67 @@ tr th:last-child {
     -moz-box-shadow: 0px 0px 0px 3px #FF6701;
     box-shadow: 0px 0px 0px 3px #FF6701;
 }
-
 .round.hollow.green {
     color: #42A129;
     background-color: #FFF;    
     -webkit-box-shadow: 0px 0px 0px 3px #42A129;
     -moz-box-shadow: 0px 0px 0px 3px #42A129;
 }
+.btn-default {
+  &.btn-inverse {
+    @include button-variant($btn-default-bg, $btn-default-color, $btn-default-bg);
+    &:hover {
+      @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-default-bg, transparent, $btn-default-bg);
+    &:hover {
+      @include button-variant($btn-default-bg, darken($btn-default-bg, 25%), $btn-default-bg);
+    }
+  }
+}
+.btn-primary {
+  &.btn-inverse {
+    @include button-variant($btn-primary-bg, $btn-primary-color, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-primary-bg, transparent, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-bg, darken($btn-primary-bg, 25%), $btn-primary-bg);
+    }
+  }
+}
+/*
+.btn-warning {
+  &.btn-inverse {
+    @include button-variant($btn-warning-bg, $btn-warning-color, $btn-warning-bg);
+    &:hover {
+      @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-warning-bg, transparent, $btn-warning-bg);
+    &:hover {
+      @include button-variant($btn-warning-bg, darken($btn-warning-bg, 25%), $btn-warning-bg);
+    }
+  }
+}
+.btn-danger {
+  &.btn-inverse {
+    @include button-variant($btn-danger-bg, $btn-danger-color, $btn-danger-bg);
+    &:hover {
+      @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-danger-bg, transparent, $btn-danger-bg);
+    &:hover {
+      @include button-variant($btn-danger-bg, darken($btn-danger-bg, 25%), $btn-danger-bg);
+    }
+  }
+} 
+*/
