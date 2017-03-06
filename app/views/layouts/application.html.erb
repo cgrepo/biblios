@@ -30,13 +30,12 @@
             <%= link_to '#', class:'btn btn-xs btn-danger' do %>
                 <span class='glyphicon glyphicon-log-out'> Logout</span>
             <% end %>
-            
+
           </span>
         <% end %>
         <% flash.each do |key, value| %>
-          <p id='<%= key %>'><%= value %></p>
+            <p style="color: #F6FFFF;" id='<%= key %>'><%= value %></p>
         <% end %>
-        <%#= logged_in? %>
       </div>
     </div>
   </div>

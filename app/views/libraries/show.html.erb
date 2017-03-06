@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @library.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @library.address %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @library.telephone %>
-</p>
-
-<%= link_to 'Edit', edit_library_path(@library) %> |
-<%= link_to 'Back', libraries_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-8'>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Nombre:</strong>
+        <%= @library.name %>
+      </p>
+      <p>
+        <strong>Direccion:</strong>
+        <%= @library.address %>
+      </p>
+      <p>
+        <strong>Telefono(s):</strong>
+        <%= @library.telephone %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Editar', edit_library_path(@library),class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Regresar', libraries_path,class:'btn btn-md btn-block be-purple_strong' %>  
+    </div>
+  </div>
+</div>

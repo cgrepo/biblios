@@ -1,8 +1,7 @@
-<%= form_for(@library) do |f| %>
+<%= bootstrap_form_for(@library) do |f| %>
   <% if @library.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@library.errors.count, "error") %> prohibited this library from being saved:</h2>
-
       <ul>
       <% @library.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,20 +9,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-4 col-md-3'>
+      <%= f.text_field :name, label:'Nombre'%>
+    </div>
+    <div class='col-xs-4 col-md-7'>
+      <%= f.text_field :address, label:'Direccion' %>
+    </div>
+    <div class='col-xs-2 col-md-2'>
+      <%= f.phone_field :telephone, label:'Telefono(s)' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

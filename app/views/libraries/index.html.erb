@@ -1,31 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Libraries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Telephone</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @libraries.each do |library| %>
-      <tr>
-        <td><%= library.name %></td>
-        <td><%= library.address %></td>
-        <td><%= library.telephone %></td>
-        <td><%= link_to 'Show', library %></td>
-        <td><%= link_to 'Edit', edit_library_path(library) %></td>
-        <td><%= link_to 'Destroy', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Library', new_library_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12 col-md-12'>
+      <p id="notice"><%= notice %></p>
+      <h1>Lista de Bibliotecas</h1>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-12'>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Telefono(s)</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @libraries.each do |library| %>
+              <tr>
+                <td><%= library.name %></td>
+                <td><%= library.address %></td>
+                <td><%= library.telephone %></td>
+                <td><%= link_to '', library, title:'mostrar', rel:'tooltip', 
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-file' %></td>
+                <td><%= link_to '', edit_library_path(library), title:'editar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-edit' %></td>
+                <td><%= link_to '', library, method: :delete, data: { confirm: 'Are you sure?' },
+                    title:'borrar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-trash'%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= link_to 'Nueva Biblioteca', new_library_path, class:'btn btn-xs btn-default btn-block' %>
+    </div>
+  </div>
+</div>
