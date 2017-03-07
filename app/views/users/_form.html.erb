@@ -1,8 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,24 +9,16 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :fullname %><br>
-    <%= f.text_field :fullname %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-4 col-md-4'></div>
+      <div class='col-xs-4 col-md-4'>
+        <%= f.text_field :name, label:'Usuario' %>
+        <%= f.text_field :fullname, label:'Nombre Completo' %>
+        <%= f.email_field :email, label:'Correo electronico' %>
+        <%= f.password_field :password_digest %>
+        <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
+      </div>
+    </div>
   </div>
 <% end %>
