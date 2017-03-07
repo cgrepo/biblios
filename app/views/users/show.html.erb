@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Fullname:</strong>
-  <%= @user.fullname %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class='container be-round_ligth_gray'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-8'>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      <p>
+        <strong>Fullname:</strong>
+        <%= @user.fullname %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Password digest:</strong>
+        <%= @user.password_digest %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Editar', edit_user_path(@user), class:'btn btn-md btn-block  be-border_heroku' %>
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Regresar', users_path, class:'btn btn-md btn-block be-border_heroku' %>  
+    </div>
+  </div>
+</div>
