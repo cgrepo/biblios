@@ -1,8 +1,7 @@
-<%= form_for(@school) do |f| %>
+<%= bootstrap_form_for(@school) do |f| %>
   <% if @school.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@school.errors.count, "error") %> prohibited this school from being saved:</h2>
-
       <ul>
       <% @school.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,32 +9,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :fullname %><br>
-    <%= f.text_field :fullname %>
-  </div>
-  <div class="field">
-    <%= f.label :responsable %><br>
-    <%= f.text_field :responsable %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
-  </div>
-  <div class="field">
-    <%= f.label :library_id %><br>
-    <%= f.text_field :library_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-4 col-md-4'>
+        <%= f.text_field :name, label:'Nombre' %>
+        <%= f.text_field :responsable, label:'Nombre Responsable' %>
+        <%= f.telephone_field :telephone, label:'Telefono(s)' %>
+        <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
+      </div>
+      <div class='col-xs-4 col-md-4'>
+        <%= f.text_field :shortname, label:'Nombre Corto' %>
+        <%= f.email_field :email, label:'Correo Electronico' %>
+        <%= f.collection_select_with_bootstrap :library_id, Library.all, :id, :name, label:'Biblioteca'  %>
+        <%= link_to 'Regresar', schools_path, class:'btn btn-md btn-block be-purple_strong' %>
+      </div>
+    </div>
   </div>
 <% end %>
