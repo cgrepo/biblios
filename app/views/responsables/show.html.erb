@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Fullname:</strong>
-  <%= @responsable.fullname %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-8'>
+    <p>
+      <strong>Fullname:</strong>
+      <%= @responsable.fullname %>
 </p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @responsable.email %>
+    <p>
+      <strong>Email:</strong>
+      <%= @responsable.email %>
 </p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @responsable.telephone %>
+    <p>
+      <strong>Telephone:</strong>
+      <%= @responsable.telephone %>
 </p>
-
-<p>
-  <strong>Library:</strong>
-  <%= @responsable.library %>
+    <p>
+      <strong>Library:</strong>
+      <%= @responsable.library.name %>
 </p>
-
-<%= link_to 'Edit', edit_responsable_path(@responsable) %> |
-<%= link_to 'Back', responsables_path %>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Editar', edit_responsable_path(@responsable), class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Regresar', responsables_path, class:'btn btn-md btn-block be-purple_strong' %>  
+    </div>
+  </div>
+</div>

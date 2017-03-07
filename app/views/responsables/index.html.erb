@@ -1,33 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Responsables</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Fullname</th>
-      <th>Email</th>
-      <th>Telephone</th>
-      <th>Library</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @responsables.each do |responsable| %>
-      <tr>
-        <td><%= responsable.fullname %></td>
-        <td><%= responsable.email %></td>
-        <td><%= responsable.telephone %></td>
-        <td><%= responsable.library %></td>
-        <td><%= link_to 'Show', responsable %></td>
-        <td><%= link_to 'Edit', edit_responsable_path(responsable) %></td>
-        <td><%= link_to 'Destroy', responsable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Responsable', new_responsable_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12 col-md-12'>
+      <h1>Lista Responsables</h1>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-12'>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Biblioteca</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @responsables.each do |responsable| %>
+              <tr>
+                <td><%= responsable.fullname %></td>
+                <td><%= responsable.email %></td>
+                <td><%= responsable.telephone %></td>
+                <td><%= responsable.library.name %></td>
+                <td><%= link_to '', responsable, title:'mostrar', rel:'tooltip', 
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-file' %></td>
+                <td><%= link_to '', edit_responsable_path(responsable), title:'editar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-edit' %></td>
+                <td><%= link_to '', responsable, method: :delete, data: { confirm: 'Esta usted seguro?' }, title:'borrar', rel:'tooltip',
+                    class:'btn btn-sm btn-default btn-block glyphicon glyphicon-trash' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= link_to 'Nuevo Responsable', new_responsable_path, class:'btn btn-xs btn-default btn-block' %>
+    </div>
+  </div>

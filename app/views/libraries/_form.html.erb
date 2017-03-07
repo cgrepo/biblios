@@ -9,22 +9,22 @@
       </ul>
     </div>
   <% end %>
-<div class='container'>
-  <div class='row'>
-    <div class='col-xs-4 col-md-3'>
-      <%= f.text_field :name, label:'Nombre'%>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-4 col-md-3'>
+        <%= f.text_field :name, label:'Nombre'%>
+      </div>
+      <div class='col-xs-4 col-md-7'>
+        <%= f.text_field :address, label:'Direccion' %>
+      </div>
+      <div class='col-xs-2 col-md-2'>
+        <%= f.phone_field :telephone, label:'Telefono(s)' %>
+      </div>
     </div>
-    <div class='col-xs-4 col-md-7'>
-      <%= f.text_field :address, label:'Direccion' %>
-    </div>
-    <div class='col-xs-2 col-md-2'>
-      <%= f.phone_field :telephone, label:'Telefono(s)' %>
+    <div class='row'>
+      <div class='col-xs-3 col-md-3'>
+        <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
+      </div>
     </div>
   </div>
-  <div class='row'>
-    <div class='col-xs-3 col-md-3'>
-      <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
-    </div>
-  </div>
-</div>
 <% end %>
