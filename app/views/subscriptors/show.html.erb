@@ -1,94 +1,88 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Account:</strong>
-  <%= @subscriptor.account %>
-</p>
-
-<p>
-  <strong>Fullname:</strong>
-  <%= @subscriptor.fullname %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @subscriptor.group %>
-</p>
-
-<p>
-  <strong>Scool:</strong>
-  <%= @subscriptor.scool %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @subscriptor.email %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @subscriptor.address %>
-</p>
-
-<p>
-  <strong>Colony:</strong>
-  <%= @subscriptor.colony %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @subscriptor.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @subscriptor.state %>
-</p>
-
-<p>
-  <strong>Cp:</strong>
-  <%= @subscriptor.cp %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @subscriptor.telephone %>
-</p>
-
-<p>
-  <strong>Celular:</strong>
-  <%= @subscriptor.celular %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @subscriptor.picture %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @subscriptor.notes %>
-</p>
-
-<p>
-  <strong>Vigencystart:</strong>
-  <%= @subscriptor.vigencyStart %>
-</p>
-
-<p>
-  <strong>Vigencyend:</strong>
-  <%= @subscriptor.vigencyEnd %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @subscriptor.age %>
-</p>
-
-<p>
-  <strong>Gurantor:</strong>
-  <%= @subscriptor.gurantor %>
-</p>
-
-<%= link_to 'Edit', edit_subscriptor_path(@subscriptor) %> |
-<%= link_to 'Back', subscriptors_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-8 col-md-8'>
+      <p>
+        <strong>Cuenta:</strong>
+        <%= @subscriptor.account %>
+      </p>
+      <p>
+        <strong>Nombre Completo:</strong>
+        <%= @subscriptor.fullname %>
+      </p>
+      <p>
+        <strong>Grupo:</strong>
+        <%= @subscriptor.group %>
+      </p>
+      <p>
+        <strong>Escuela:</strong>
+        <%= @subscriptor.school %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @subscriptor.email %>
+      </p>
+      <p>
+        <strong>Dirección:</strong>
+        <%= @subscriptor.address %>
+      </p>
+      <p>
+        <strong>Colonia:</strong>
+        <%= @subscriptor.colony %>
+      </p>
+      <p>
+        <strong>Ciudad:</strong>
+        <%= @subscriptor.city %>
+      </p>
+      <p>
+        <strong>Estado:</strong>
+        <%= @subscriptor.state %>
+      </p>
+      <p>
+        <strong>C.P.:</strong>
+        <%= @subscriptor.cp %>
+      </p>
+      <p>
+        <strong>Telefono Fijo:</strong>
+        <%= @subscriptor.telephone %>
+      </p>
+      <p>
+        <strong>Celular:</strong>
+        <%= @subscriptor.celular %>
+      </p>
+      <p>
+        <strong>Foto:</strong>
+        <%= @subscriptor.picture %>
+      </p>
+      <p>
+        <strong>Notas:</strong>
+        <%= @subscriptor.notes %>
+      </p>
+      <p>
+        <strong>Inicio Vigencia:</strong>
+        <%= @subscriptor.vigencyStart %>
+      </p>
+      <p>
+        <strong>Fin Vigencia:</strong>
+        <%= @subscriptor.vigencyEnd %>
+      </p>
+      <p>
+        <strong>Edad:</strong>
+        <%= @subscriptor.age %>
+      </p>
+      <p>
+        <strong>Fiador:</strong>
+        <%= @subscriptor.gurantor %>
+      </p>
+   </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Editar', edit_subscriptor_path(@subscriptor), class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Regresar', subscriptors_path, class:'btn btn-md btn-block be-purple_strong' %>  
+    </div>
+  </div>
+</div>

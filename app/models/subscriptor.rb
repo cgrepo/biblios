@@ -1,4 +1,4 @@
 class Subscriptor < ActiveRecord::Base
   belongs_to :group
-  belongs_to :scool
+  belongs_to :school
 end
