@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery-ui/widgets/datepicker
+//= require cafe
 //= require_tree .
