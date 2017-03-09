@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
    	session[:user_id]
+   	#session[:expires_at] = Time.current + 24.hours
   end
   def current_user
    	@current_user ||= User.find(session[:user_id])

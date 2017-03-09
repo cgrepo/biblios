@@ -14,23 +14,28 @@
     <div class="row be-purple_strong">
       <div class="col-xs col-md-12">
         <% if logged_in? %>
-        <div class="pull-left round round-sm hollow blue">
-          <span class="glyphicon glyphicon-user"></span>
-        </div>
-          <span class="label">
-            usuario <%=" " + current_user.name.upcase %>
-          </span>
-          <span class="pull-right">
-            <%= link_to ' CUENTAS', users_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to ' GRUPOS', groups_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to ' BIBLIOTECAS', libraries_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to ' RESPONSABLES', responsables_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to ' ESCUELAS', schools_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to ' USUARIOS', subscriptors_path, class:'btn btn-xs be-border_heroku' %>
-            <%= link_to logout_path, method: :delete, class:'btn btn-xs btn-danger' do %>
-                <span class='glyphicon glyphicon-log-out'> Logout</span>
-            <% end %> 
-          </span>
+            <%# unless session[:expires_at].to_time < Time.current %>
+                <div class="pull-left round round-sm hollow blue">
+                  <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <span class="label">
+                    usuario <%=" " + current_user.name.upcase %>
+                </span>
+                <span class="pull-right">
+                <%= link_to ' CUENTAS', users_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to ' GRUPOS', groups_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to ' BIBLIOTECAS', libraries_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to ' RESPONSABLES', responsables_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to ' ESCUELAS', schools_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to ' USUARIOS', subscriptors_path, class:'btn btn-xs be-border_heroku' %>
+                <%= link_to logout_path, method: :delete, class:'btn btn-xs btn-danger' do %>
+                    <span class='glyphicon glyphicon-log-out'> Logout</span>
+                <% end %> 
+              </span>
+            <%# else %>
+                <%# reset_session %>
+                <%# redirect_to login_path, notice: "You have been log out" %>
+            <%# end %>
         <% end %>
         <% flash.each do |key, value| %>
             <p style="color: #F6FFFF;" id='<%= key %>'><%= value %></p>
@@ -42,6 +47,7 @@
 <%= yield %>
 <!--
     <div class="container">
+    
         <div class="row">
             <div class="col-sm-1">
         		<div class="round round-sm hollow ">
@@ -85,7 +91,7 @@
                     <span class="glyphicon glyphicon-trash"></span>
                 </div>
         	</div>
-        </div>
+        </div> 
         <div class="row">
             <div class="col-sm-1">
             	<div class="round round-lg hollow ">

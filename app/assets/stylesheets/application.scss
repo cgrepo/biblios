@@ -25,8 +25,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
-h1 {text-align: center;}
-
+h1 {text-align: center;
+  
+}
 a,a:visited{ color: inherit !important; 
 }
 table {
@@ -143,6 +144,17 @@ tr th:last-child {
     -moz-border-radius: 20px;
     border-radius: 20px;
     font-size: 1.5em;
+}
+.round.round-bg {
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    font-size: 1.5em;
+}
+.round.purpleh {
+  background-color: #AF9BC5;
 }
 .round.blue {
     background-color: #3EA6CE;
