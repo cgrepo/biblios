@@ -13,34 +13,34 @@
     <div class='row'>
       <div class='col-xs-4 col-md-4'></div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :description, label:'Descripcion' %>
+        <%= f.text_field_with_bootstrap :description, label:'Descripcion' %>
       </div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.number_field :books, label:'Libros' %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :penalty, label:'Penalizacion' %>
-      </div>
-      <div class='col-xs-2 col-md-2'>
-        <%= f.number_field :returnDay, label:'Fecha_De_Retorno' %>
+        <%= f.number_field_with_bootstrap :books, label:'Libros' %>
       </div>
     </div>
     <div class='row'>
       <div class='col-xs-4 col-md-4'></div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.number_field :renovation, label:'Renovacion' %>
+        <%= f.text_field_with_bootstrap :penalty, label:'Penalizacion' %>
       </div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :vigencyStar, label:'Inicio_vicencia', class:'form-control xdate' %>
+        <%= f.number_field_with_bootstrap :returnDay, label:'Fecha_De_Retorno' %>
       </div>
     </div>
     <div class='row'>
       <div class='col-xs-4 col-md-4'></div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :vigencyEnd, label:'Fin_Vigencia', class:'form-control xdate' %>
+        <%= f.number_field_with_bootstrap :renovation, label:'Renovacion' %>
+      </div>
+      <div class='col-xs-2 col-md-2'>
+        <%= f.text_field_with_bootstrap :vigencyStar, label:'Inicio_vicencia', class:'form-control xdate' %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-xs-4 col-md-4'></div>
+      <div class='col-xs-2 col-md-2'>
+        <%= f.text_field_with_bootstrap :vigencyEnd, label:'Fin_Vigencia', class:'form-control xdate' %>
       </div>
       <div class='col-xs-2 col-md-2'>
         <br>

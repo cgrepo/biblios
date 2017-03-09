@@ -12,9 +12,9 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-4 col-md-4'>
-        <%= f.text_field :name, label:'Nombre' %>
-        <%= f.text_field :responsable, label:'Nombre Responsable' %>
-        <%= f.telephone_field :telephone, label:'Telefono(s)' %>
+        <%= f.text_field_with_bootstrap :name, label:'Nombre' %>
+        <%= f.text_field_with_bootstrap :responsable, label:'Nombre Responsable' %>
+        <%= f.telephone_field_with_bootstrap :telephone, label:'Telefono(s)' %>
         <%= f.submit 'SALVAR', class:'btn btn-md be-border_heroku btn-block' %>
       </div>
       <div class='col-xs-4 col-md-4'>

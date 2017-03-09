@@ -13,10 +13,10 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-1 col-md-2'>
-        <%= f.text_field :account, label:'cuenta' %>
+        <%= f.text_field_with_bootstrap :account, label:'cuenta' %>
       </div>
       <div class='col-xs-3 col-md-3'>
-        <%= f.text_field :fullname, label:'Nombre Completo' %>
+        <%= f.text_field_with_bootstrap :fullname, label:'Nombre Completo' %>
       </div>
       <div class='col-xs-3 col-md-3'>
         <%= f.collection_select_with_bootstrap :group_id, Group.all, :id, :description, label:'Grupo'  %>
@@ -27,24 +27,24 @@
     </div>
     <div class='row'>
       <div class='col-xs-3 col-md-4'>
-        <%= f.text_field :email, label:'Correo Electronico' %>
+        <%= f.email_field_with_bootstrap :email, label:'Correo Electronico' %>
       </div>
       <div class='col-xs-4 col-md-4'>
-        <%= f.text_field :address, label:'Direccion' %>
+        <%= f.text_field_with_bootstrap :address, label:'Direccion' %>
       </div>
       <div class='col-xs-4 col-md-4'>
-        <%= f.text_field :colony, label:'Colonia' %>
+        <%= f.text_field_with_bootstrap :colony, label:'Colonia' %>
       </div>
     </div>
     <div class='row'>
       <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :city, label:'Ciudad' %>
+        <%= f.text_field_with_bootstrap :city, label:'Ciudad' %>
       </div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.text_field :state, label:'Estado' %>
+        <%= f.text_field_with_bootstrap :state, label:'Estado' %>
       </div>
       <div class='col-xs-1 col-md-1'>
-        <%= f.text_field :cp, label:'C.P.' %>
+        <%= f.text_field_with_bootstrap :cp, label:'C.P.' %>
       </div>
       <div class='col-xs-2 col-md-2'>
         <%= f.phone_field_with_bootstrap :telephone, label:'Telefono Fijo' %>
