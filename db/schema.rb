@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308195823) do
+ActiveRecord::Schema.define(version: 20170309194359) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "description"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170308195823) do
     t.string   "cp"
     t.string   "telephone"
     t.string   "celular"
-    t.binary   "picture"
+    t.string   "picture"
     t.text     "notes"
     t.date     "vigencyStart"
     t.date     "vigencyEnd"
