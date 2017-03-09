@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(@subscriptor) do |f| %>
   <% if @subscriptor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@subscriptor.errors.count, "error") %> prohibited this subscriptor from being saved:</h2>
+      <h2><%= pluralize(@subscriptor.errors.count, "error") %> No se pudo salvar!:</h2>
 
       <ul>
       <% @subscriptor.errors.full_messages.each do |message| %>

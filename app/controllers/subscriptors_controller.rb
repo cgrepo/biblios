@@ -28,7 +28,7 @@ class SubscriptorsController < ApplicationController
 
     respond_to do |format|
       if @subscriptor.save
-        format.html { redirect_to @subscriptor, notice: 'Subscriptor was successfully created.' }
+        format.html { redirect_to @subscriptor, notice: 'Subscriptor creado satisfactoriamente!.' }
         format.json { render :show, status: :created, location: @subscriptor }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SubscriptorsController < ApplicationController
   def update
     respond_to do |format|
       if @subscriptor.update(subscriptor_params)
-        format.html { redirect_to @subscriptor, notice: 'Subscriptor was successfully updated.' }
+        format.html { redirect_to @subscriptor, notice: 'Subscriptor actualizado satisfactoriamente!.' }
         format.json { render :show, status: :ok, location: @subscriptor }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SubscriptorsController < ApplicationController
   def destroy
     @subscriptor.destroy
     respond_to do |format|
-      format.html { redirect_to subscriptors_url, notice: 'Subscriptor was successfully destroyed.' }
+      format.html { redirect_to subscriptors_url, notice: 'Subscriptor borrado satisfactoriamente!.' }
       format.json { head :no_content }
     end
   end

@@ -28,7 +28,7 @@ class ResponsablesController < ApplicationController
 
     respond_to do |format|
       if @responsable.save
-        format.html { redirect_to @responsable, notice: 'Responsable was successfully created.' }
+        format.html { redirect_to @responsable, notice: 'Responsable creado satisfactoriamente!.' }
         format.json { render :show, status: :created, location: @responsable }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ResponsablesController < ApplicationController
   def update
     respond_to do |format|
       if @responsable.update(responsable_params)
-        format.html { redirect_to @responsable, notice: 'Responsable was successfully updated.' }
+        format.html { redirect_to @responsable, notice: 'Responsable actualizado satisfactoriamente!.' }
         format.json { render :show, status: :ok, location: @responsable }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ResponsablesController < ApplicationController
   def destroy
     @responsable.destroy
     respond_to do |format|
-      format.html { redirect_to responsables_url, notice: 'Responsable was successfully destroyed.' }
+      format.html { redirect_to responsables_url, notice: 'Responsable borrado satisfactoriamente!.' }
       format.json { head :no_content }
     end
   end

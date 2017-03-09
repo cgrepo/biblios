@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(@school) do |f| %>
   <% if @school.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@school.errors.count, "error") %> prohibited this school from being saved:</h2>
+      <h2><%= pluralize(@school.errors.count, "error") %> No se pudo salvar!:</h2>
       <ul>
       <% @school.errors.full_messages.each do |message| %>
         <li><%= message %></li>
