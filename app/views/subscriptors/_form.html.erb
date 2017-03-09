@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@subscriptor) do |f| %>
+<%= bootstrap_form_for(@subscriptor, html:{multipart:true}) do |f| %>
   <% if @subscriptor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subscriptor.errors.count, "error") %> No se pudo salvar!:</h2>
@@ -12,20 +12,24 @@
   <% end %>
   <div class='container'>
     <div class='row'>
-      <div class='col-xs-1 col-md-2'>
+      <div class='col-xs-3 col-md-3'>
+          <%= image_tag @subscriptor.picture, class:'img-fluid card'  %>
+          <%= f.file_field :picture, label:'Foto' %>
+      </div>
+      <div class='col-xs-1 col-md-1'>
         <%= f.text_field_with_bootstrap :account, label:'cuenta' %>
       </div>
       <div class='col-xs-3 col-md-3'>
         <%= f.text_field_with_bootstrap :fullname, label:'Nombre Completo' %>
       </div>
-      <div class='col-xs-3 col-md-3'>
-        <%= f.collection_select_with_bootstrap :group_id, Group.all, :id, :description, label:'Grupo'  %>
-      </div> 
       <div class='col-xs-4 col-md-4'>
         <%= f.collection_select_with_bootstrap :school_id, School.all, :id, :name, label:'Escuela'  %>
       </div>
     </div>
     <div class='row'>
+      <div class='col-xs-3 col-md-3'>
+        <%= f.collection_select_with_bootstrap :group_id, Group.all, :id, :description, label:'Grupo'  %>
+      </div> 
       <div class='col-xs-3 col-md-4'>
         <%= f.email_field_with_bootstrap :email, label:'Correo Electronico' %>
       </div>
@@ -68,11 +72,6 @@
       </div>
       <div class='col-xs-4 col-md-4'>
         <%= f.text_field_with_bootstrap :gurantor, label:'Fiador' %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-8 col-md-8'>
-        <%= f.text_area_with_bootstrap :picture %>
       </div>
     </div>
     <div class='row'>
