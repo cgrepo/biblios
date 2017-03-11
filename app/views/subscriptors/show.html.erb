@@ -1,83 +1,122 @@
-<div class='container'>
+<div class='container be-round_ligth_gray'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= image_tag @subscriptor.picture, class:'img-fluid card'  %>
+      <div class='card-block be-border_heroku'>
+        <h4 class='title-small'>
+          <strong><%= @subscriptor.fullname %></strong><br>
+          <%= @subscriptor.email %>
+        </h4>
+      </div>
+    </div>
+    <div class='col-xs-9 col-md-9'>
+      <div class='row'>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Cuenta: </strong>
+            <%= @subscriptor.account %>
+          </p>
+        </div>
+        <div class='col-xs-2 col-md-3'>
+          <p>
+            <strong>Grupo:</strong>
+            <%= @subscriptor.group.description %>
+          </p>
+        </div>
+        <div class='col-xs-5 col-md-4'>
+          <p>
+            <strong>Escuela:</strong>
+            <%= @subscriptor.school.shortname %>
+          </p>      
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-xs col-md-5'>
+          <p>
+            <strong>Dirección: </strong><%= @subscriptor.address %>
+          </p>      
+        </div>
+        <div class='col-xs col-md-4'>
+         <p>
+          <strong>Colonia:</strong><%= @subscriptor.colony %>
+        </p>
+       </div>
+     </div>
+      <div class='row'>
+        <div class='col-xs-2 col-md-3'>
+          <p>
+            <strong>C.P.</strong><br>
+            <%= @subscriptor.cp %>
+          </p>
+        </div>
+        <div class='col-xs-3 col-md-3'>
+          <p>
+            <strong>Ciudad</strong><br>
+            <%= @subscriptor.city %>
+          </p>         
+        </div>
+        <div class='col-xs-3 col-md-3'>
+          <p>
+            <strong>Estado</strong><br>
+            <%= @subscriptor.state %>
+          </p>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Telefono Fijo</strong>
+            <%= @subscriptor.telephone %>
+          </p>
+        </div>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Celular</strong><br>
+            <%= @subscriptor.celular %>
+          </p>
+        </div>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Edad</strong><br>
+            <%= @subscriptor.age %>
+          </p>
+        </div>
+        <div class='col-xs-2 col-md-2'></div>
+      </div>
+      <div class='row'>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Inicio Vigencia</strong><br>
+            <%= @subscriptor.vigencyStart %>
+          </p>
+        </div>
+        <div class='col-xs-2 col-md-2'>
+          <p>
+            <strong>Fin Vigencia:</strong>
+            <%= @subscriptor.vigencyEnd %>
+          </p>
+        </div>
+        <div class='col-xs-4 col-md-4'>
+          <p>
+            <strong>Fiador:</strong>
+            <%= @subscriptor.gurantor %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class='row'>
     <div class='col-xs-8 col-md-8'>
       <p>
-        <strong>Cuenta:</strong>
-        <%= @subscriptor.account %>
-      </p>
-      <p>
-        <strong>Nombre Completo:</strong>
-        <%= @subscriptor.fullname %>
-      </p>
-      <p>
-        <strong>Grupo:</strong>
-        <%= @subscriptor.group %>
-      </p>
-      <p>
-        <strong>Escuela:</strong>
-        <%= @subscriptor.school %>
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <%= @subscriptor.email %>
-      </p>
-      <p>
-        <strong>Dirección:</strong>
-        <%= @subscriptor.address %>
-      </p>
-      <p>
-        <strong>Colonia:</strong>
-        <%= @subscriptor.colony %>
-      </p>
-      <p>
-        <strong>Ciudad:</strong>
-        <%= @subscriptor.city %>
-      </p>
-      <p>
-        <strong>Estado:</strong>
-        <%= @subscriptor.state %>
-      </p>
-      <p>
-        <strong>C.P.:</strong>
-        <%= @subscriptor.cp %>
-      </p>
-      <p>
-        <strong>Telefono Fijo:</strong>
-        <%= @subscriptor.telephone %>
-      </p>
-      <p>
-        <strong>Celular:</strong>
-        <%= @subscriptor.celular %>
-      </p>
-      <p>
-        <strong>Foto:</strong>
-        <%= @subscriptor.picture %>
-      </p>
-      <p>
-        <strong>Notas:</strong>
+        <strong>Notas</strong><br>
         <%= @subscriptor.notes %>
       </p>
-      <p>
-        <strong>Inicio Vigencia:</strong>
-        <%= @subscriptor.vigencyStart %>
-      </p>
-      <p>
-        <strong>Fin Vigencia:</strong>
-        <%= @subscriptor.vigencyEnd %>
-      </p>
-      <p>
-        <strong>Edad:</strong>
-        <%= @subscriptor.age %>
-      </p>
-      <p>
-        <strong>Fiador:</strong>
-        <%= @subscriptor.gurantor %>
-      </p>
-   </div>
+    </div>
   </div>
 </div>
 <div class='container'>
   <div class='row'>
+    <div class='col-xs-4 col-md-4'></div>
     <div class='col-xs-3 col-md-2'>
       <%= link_to 'Editar', edit_subscriptor_path(@subscriptor), class:'btn btn-md btn-block be-purple_strong' %>
     </div>
