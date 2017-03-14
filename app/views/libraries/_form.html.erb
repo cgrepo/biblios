@@ -11,6 +11,11 @@
   <% end %>
   <div class='container'>
     <div class='row'>
+      <div class='col-xs-1 col-md-1'>
+        <%= f.text_field_with_bootstrap :number, label:'No. de Biblioteca' %>
+      </div>
+    </div>
+    <div class='row'>
       <div class='col-xs-4 col-md-3'>
         <%= f.text_field_with_bootstrap :name, label:'Nombre'%>
       </div>
@@ -18,7 +23,7 @@
         <%= f.text_field_with_bootstrap :address, label:'Direccion' %>
       </div>
       <div class='col-xs-2 col-md-2'>
-        <%= f.telephonephone_field_with_bootstrap :telephone, label:'Telefono(s)' %>
+        <%= f.telephone_field_with_bootstrap :telephone, label:'Telefono(s)' %>
       </div>
     </div>
     <div class='row'>

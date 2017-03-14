@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309194359) do
+ActiveRecord::Schema.define(version: 20170314185833) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "description"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170309194359) do
     t.string   "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "number"
   end
 
   create_table "responsables", force: :cascade do |t|
