@@ -2,7 +2,7 @@ class Credential < Prawn::Document
     def initialize(subscriptor)
         super()
         stroke_axis
-#-----------FIRST BOX----------------------------------------------------
+#-----------FIRST BOX--------------------------------------------------------------------
         bounding_box([10, 715], :width => 270, :height => 155) do
             transparent(1) {stroke_bounds}
         end
@@ -15,9 +15,10 @@ class Credential < Prawn::Document
             El lector se obliga a:
             * Conservar en buen estado los materiales de la biblioteca
             * Devolver los libros prestados a domicilio en la fecha
-              indicada""", at:[20,700], size:8, width:200, height:200)
-        text_box("""Firma del lector                        Firma del encargado de la biblioteca""", at:[30,570], size:8)
-#-----------SECOND BOX------------------------------------------------------------------
+              indicada""", at:[-130,568], size:8, width:200, height:200, rotate_around: :upper_right, rotate: 180)
+        text_box("""Firma del lector                        Firma del encargado de la biblioteca""", 
+            at:[-10,730], size:8,  width:280, height:40, rotate_around: :center, rotate: 180 )
+    #-----------SECOND BOX-------------------------------------------------------------------
         bounding_box([10, 555], :width => 270, :height => 155) do
             move_down 10
             font_size(9) {text "RED NACIONAL DE BIBLIOTECAS PUBLICAS", align: :center}
@@ -35,7 +36,7 @@ class Credential < Prawn::Document
         #stroke_rectangle [120,449], 155,30
         text_box("Domicilio: #{subscriptor.address}", at:[120,460], size:8, width:155, height:30 )
         text_box("Fecha de vencimiento: #{subscriptor.vigencyStart}", at:[120,415], size:8)
-#-----------SHAPES-----------------------------------------------------------------------
+    #-----------SHAPES-----------------------------------------------------------------------
         stroke do
             self.line_width = 0.5
             horizontal_line 20,270, at:520
