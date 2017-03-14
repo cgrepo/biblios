@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :subscriptors
+  resources :subscriptors do
+    get 'credential', to: 'subscriptors#buildCredential'
+  end
   resources :groups
   resources :schools
   resources :responsables

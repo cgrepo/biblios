@@ -14,22 +14,22 @@
             <tr>
               <th>Cuenta</th>
               <th>Nombre Completo</th>
-              <th>Groupo</th>
-              <th>Escuela</th>
+              <!--<th>Groupo</th>
+              <th>Escuela</th>-->
               <th>Email</th>
               <th>Dirección</th>
-              <th>Colonia</th>
+              <!--<th>Colonia</th>
               <th>Ciudad</th>
               <th>Estado</th>
-              <th>C.P.</th>
+              <th>C.P.</th>-->
               <th>Telefono Casa</th>
               <th>Celular</th>
-              <th>Foto</th>
+              <!--<th>Foto</th>
               <th>Notas</th>
               <th>Inicio Vigencia</th>
               <th>Fin Vigencia</th>
               <th>Edad</th>
-              <th>Fiador</th>
+              <th>Fiador</th>-->
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -38,22 +38,22 @@
               <tr>
                 <td><%= subscriptor.account %></td>
                 <td><%= subscriptor.fullname %></td>
-                <td><%= subscriptor.group.description %></td>
-                <td><%= subscriptor.school.name %></td>
+                <!--<td><%#= subscriptor.group.description %></td>
+                <td><%#= subscriptor.school.name %></td>-->
                 <td><%= subscriptor.email %></td>
                 <td><%= subscriptor.address %></td>
-                <td><%= subscriptor.colony %></td>
-                <td><%= subscriptor.city %></td>
-                <td><%= subscriptor.state %></td>
-                <td><%= subscriptor.cp %></td>
+                <!--<td><%#= subscriptor.colony %></td>
+                <td><%#= subscriptor.city %></td>
+                <td><%#= subscriptor.state %></td>
+                <td><%#= subscriptor.cp %></td> -->
                 <td><%= subscriptor.telephone %></td>
                 <td><%= subscriptor.celular %></td>
-                <td><%= subscriptor.picture %></td>
-                <td><%= subscriptor.notes %></td>
-                <td><%= subscriptor.vigencyStart %></td>
-                <td><%= subscriptor.vigencyEnd %></td>
-                <td><%= subscriptor.age %></td>
-                <td><%= subscriptor.gurantor %></td>
+                <!--<td><%#= subscriptor.picture %></td>
+                <td><%#= subscriptor.notes %></td>
+                <td><%#= subscriptor.vigencyStart %></td>
+                <td><%#= subscriptor.vigencyEnd %></td>
+                <td><%#= subscriptor.age %></td>
+                <td><%#= subscriptor.gurantor %></td> -->
                 <td><%= link_to '', subscriptor, title:'mostrar', rel:'tooltip', 
                         class:'btn btn-sm btn-block btn-default glyphicon glyphicon-file' %></td>
                 <td><%= link_to '', edit_subscriptor_path(subscriptor), title:'editar', rel:'tooltip',

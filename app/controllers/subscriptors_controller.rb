@@ -60,7 +60,23 @@ class SubscriptorsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def buildCredential
+    @subscriptor = Subscriptor.find(params[:subscriptor_id])
+    #byebug
+    respond_to do |format|
+      format.pdf do
+        
+        pdf = Credential.new(@subscriptor)
+        
+        send_data pdf.render, 
+          filename: "solicitud_servicio_#{@subscriptor.id}.pdf",
+          type: 'application/pdf',
+          disposition: 'inline'
+      end
+    end
+  end
+    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriptor
@@ -71,4 +87,5 @@ class SubscriptorsController < ApplicationController
     def subscriptor_params
       params.require(:subscriptor).permit(:account, :fullname, :group_id, :school_id, :email, :address, :colony, :city, :state, :cp, :telephone, :celular, :picture, :notes, :vigencyStart, :vigencyEnd, :age, :gurantor)
     end
+    
 end
