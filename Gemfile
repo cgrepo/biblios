@@ -28,6 +28,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap_form'
 gem 'carrierwave', '~> 1.0'
 gem 'prawn'
+gem 'pry'
 #gem 'rmagick'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

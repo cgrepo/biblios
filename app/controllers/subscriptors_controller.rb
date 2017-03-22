@@ -70,7 +70,7 @@ class SubscriptorsController < ApplicationController
         pdf = Credential.new(@subscriptor)
         
         send_data pdf.render, 
-          filename: "solicitud_servicio_#{@subscriptor.id}.pdf",
+          filename: "credencial-#{@subscriptor.id}.pdf",
           type: 'application/pdf',
           disposition: 'inline'
       end
