@@ -4,5 +4,5 @@ class Library < ActiveRecord::Base
     has_many :subcriptors
     has_many :groups
     has_one :responsable
-    
+    has_many :books
 end

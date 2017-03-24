@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entryDate: 2017-03-23
+  copy: 1
+  volumn: 1
+  tome: 1
+  accessible: 1
+  profile: 1
+  library_id: 
+
+two:
+  entryDate: 2017-03-23
+  copy: 1
+  volumn: 1
+  tome: 1
+  accessible: 1
+  profile: 1
+  library_id: 

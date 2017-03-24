@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :book_profiles
+  resources :books
   resources :subscriptors do
     get 'credential', to: 'subscriptors#buildCredential'
   end

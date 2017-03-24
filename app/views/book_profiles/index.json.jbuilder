@@ -1,0 +1,1 @@
+json.array! @book_profiles, partial: 'book_profiles/book_profile', as: :book_profile
