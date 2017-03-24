@@ -29,6 +29,8 @@ gem 'bootstrap_form'
 gem 'carrierwave', '~> 1.0'
 gem 'prawn'
 gem 'pry'
+gem 'will_paginate-bootstrap'
+gem 'octicons_helper'
 #gem 'rmagick'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
