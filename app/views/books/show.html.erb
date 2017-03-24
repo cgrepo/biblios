@@ -1,34 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Autor:</strong>
-  <%= @book.autor %>
-</p>
-
-<p>
-  <strong>Classification:</strong>
-  <%= @book.classification %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @book.published %>
-</p>
-
-<p>
-  <strong>Library:</strong>
-  <%= @book.library %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class='container be-round_ligth_gray'>
+  <div class='row'>
+    <div class='col-xs col-md-6'>
+      <p>
+        <strong>ISBN:</strong>
+        <%= @book.isbn %>
+      </p>
+      <p>
+        <strong>Titulo:</strong>
+        <%= @book.title %>
+      </p>
+      <p>
+        <strong>Autor:</strong>
+        <%= @book.autor %>
+      </p>
+      <p>
+        <strong>Classificación:</strong>
+        <%= @book.classification %>
+      </p>
+      <p>
+        <strong>Año:</strong>
+        <%= @book.published %>
+      </p>
+      <p>
+        <strong>Biblioteca:</strong>
+        <%= @book.library.name %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4'></div>
+    <div class='col-xs col-md-2'>
+      <%= link_to 'Editar', edit_book_path(@book), class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+    <div class='col-xs col-md-2'>
+      <%= link_to 'Regresar', books_path, class:'btn btn-md btn-block be-purple_strong' %>  
+    </div>
+  </div>
+</div>
