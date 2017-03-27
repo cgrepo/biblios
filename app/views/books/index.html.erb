@@ -4,6 +4,11 @@
       <h1>Listado de Libros</h1>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-xs-3 col-md-3'>
+      <%= link_to 'Agregar Libro', new_book_path, class:'btn btn-md btn-default btn-block'  %>
+    </div>
+  </div>
 </div>
 <div class='container'>
   <div class='row'>
@@ -31,17 +36,17 @@
                 <td><%= book.published %></td>
                 <td><%= book.library.name %></td>
                 <td>
-                  <%= link_to book, class:'btn btn-sm ' do %>
+                  <%= link_to book, class:'btn btn-md ' do %>
                     <%= octicon 'eye', class:'rigth' %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to edit_book_path(book) do %>
+                  <%= link_to edit_book_path(book), class:'btn btn-md' do %>
                     <%= octicon 'pencil', class:'rigth' %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to book, method: :delete, data: { confirm: 'Esta usted seguro?' } do %>
+                  <%= link_to book, method: :delete, data: { confirm: 'Esta usted seguro?' }, class:'btn btn-sm btn-md' do %>
                     <%= octicon 'trashcan', class:'rigth' %>
                   <% end %>
                 </td>

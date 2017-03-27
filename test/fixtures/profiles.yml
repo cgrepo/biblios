@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  copy: 1
+  volumen: 1
+  tome: 1
+  accesible: 1
+  book_id: 
+
+two:
+  copy: 1
+  volumen: 1
+  tome: 1
+  accesible: 1
+  book_id: 
