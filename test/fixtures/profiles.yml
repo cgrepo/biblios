@@ -4,12 +4,12 @@ one:
   copy: 1
   volumen: 1
   tome: 1
-  accesible: 1
+  accessible: 1
   book_id: 
 
 two:
   copy: 1
   volumen: 1
   tome: 1
-  accesible: 1
+  accessible: 1
   book_id: 

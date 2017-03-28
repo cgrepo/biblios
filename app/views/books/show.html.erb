@@ -26,6 +26,26 @@
         <%= @book.library.name %>
       </p>
     </div>
+    <div class='col-xs col-md-6'>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <td>Ejemplar</td>
+              <td>Volumen</td>
+              <td>Tomo</td>
+              <td>Accesible</td>
+            </tr>
+          </thead>
+           <tbody>
+             <td><%= @book.profile.copy %></td>
+             <td><%= @book.profile.volumen %></td>
+             <td><%= @book.profile.tome %></td>
+             <td><%= @book.profile.accessible %></td>
+           </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 <div class='container'>

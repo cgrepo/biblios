@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  resources :books
+  #get 'profile/create'
+  #get 'profile/destroy'
   resources :subscriptors do
     get 'credential', to: 'subscriptors#buildCredential'
   end
@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new", as: "login"
   delete "/logout" => "sessions#destroy", as: "logout"
   root to: 'welcome#index'
+  resources :books do
+    resources :profile, only: [:create, :destroy]
+  end
 end
