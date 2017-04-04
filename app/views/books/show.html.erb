@@ -49,6 +49,33 @@
       </div>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-xs col-md-6'></div>
+    <div class='col-xs col-md-6'>
+      <%= octicon 'repo-push', class:'rigth left', :'aria-label'=>'FICHA', width:30, height:30 %>
+      <div class='row'>
+        <div id='profile'>
+          <%= bootstrap_form_for([@book,@book.build_profile] ) do |f| %>
+            <div class='col-md-2'>
+              <%= f.text_field_with_bootstrap :copy, label:'ejemplar' %>
+            </div>
+            <div class='col-md-1'></div>
+            <div class='col-md-2'>
+              <%= f.text_field_with_bootstrap :volumen, label:'volumen' %>
+            </div>
+            <div class='col-md-1'></div>
+            <div class='col-md-2'>
+              <%= f.text_field_with_bootstrap :tome, label:'tomo' %>
+            </div>
+            <div class='col-md-1'></div>
+            <div class='col-md-2'>
+              <%= f.text_field_with_bootstrap :accessible, label:'accessible' %>
+            </div>
+          <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class='container'>
   <div class='row'>
