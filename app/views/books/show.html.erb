@@ -37,12 +37,14 @@
               <td>Accesible</td>
             </tr>
           </thead>
+          <% if @book.profile %>
            <tbody>
              <td><%= @book.profile.copy %></td>
              <td><%= @book.profile.volumen %></td>
              <td><%= @book.profile.tome %></td>
              <td><%= @book.profile.accessible %></td>
            </tbody>
+           <% end %>
         </table>
       </div>
     </div>
