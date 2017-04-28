@@ -15,6 +15,5 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy", as: "logout"
   root to: 'welcome#index'
   resources :books do
-    resources :profiles, only:[:create, :update, :destroy]
   end
 end

@@ -28,51 +28,29 @@
     </div>
     <div class='col-xs col-md-6'>
       <div class="table-responsive">
-        <table class="table table-hover table-striped">
-          <thead>
-            <tr>
-              <td>Ejemplar</td>
-              <td>Volumen</td>
-              <td>Tomo</td>
-              <td>Accesible</td>
+          <table class="table table-hover table-striped tblCard", align='center'>
+            <thead>
+              <tr >
+                <th>Ejemplar</th>
+                <th>Volumen</th>
+                <th>Tomo</th>
+                <th>Accesible</th>
+                <th colspan="1"></th>
             </tr>
-          </thead>
-          <% if @book.profile %>
-           <tbody>
-             <td><%= @book.profile.copy %></td>
-             <td><%= @book.profile.volumen %></td>
-             <td><%= @book.profile.tome %></td>
-             <td><%= @book.profile.accessible %></td>
-           </tbody>
-           <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-xs col-md-6'></div>
-    <div class='col-xs col-md-6'>
-      <%= octicon 'repo-push', class:'rigth left', :'aria-label'=>'FICHA', width:30, height:30 %>
-      <div class='row'>
-        <div id='profile'>
-          <%= bootstrap_form_for([@book,@book.build_profile] ) do |f| %>
-            <div class='col-md-2'>
-              <%= f.text_field_with_bootstrap :copy, label:'ejemplar' %>
-            </div>
-            <div class='col-md-1'></div>
-            <div class='col-md-2'>
-              <%= f.text_field_with_bootstrap :volumen, label:'volumen' %>
-            </div>
-            <div class='col-md-1'></div>
-            <div class='col-md-2'>
-              <%= f.text_field_with_bootstrap :tome, label:'tomo' %>
-            </div>
-            <div class='col-md-1'></div>
-            <div class='col-md-2'>
-              <%= f.text_field_with_bootstrap :accessible, label:'accessible' %>
-            </div>
-          <% end %>
-      </div>
+            </thead>
+            <tbody >
+              <% if @book.profile %>
+                <tr>
+                  <td><%= @book.profile.copy %></td>
+                  <td><%= @book.profile.volumen %></td>
+                  <td><%= @book.profile.tome %></td>
+                  <td><%= @book.profile.accessible %></td>
+                  <td><%= octicon 'pencil', class:'rigth' %></td>
+              </tr>
+              <% else %>
+              <% end %>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>
