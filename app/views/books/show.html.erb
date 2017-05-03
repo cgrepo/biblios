@@ -38,23 +38,30 @@
                 <th colspan="1"></th>
             </tr>
             </thead>
-            <tbody >
-              <% if @book.profile %>
-                <tr>
-                  <td><%= @book.profile.copy %></td>
-                  <td><%= @book.profile.volumen %></td>
-                  <td><%= @book.profile.tome %></td>
-                  <td><%= @book.profile.accessible %></td>
-                  <td><%= octicon 'pencil', class:'rigth' %></td>
+            <tbody>
+              <tr>
+                <% if @book.profile %>
+                <td><%= @book.profile.copy %></td>
+                <td><%= @book.profile.volumen %></td>
+                <td><%= @book.profile.tome %></td>
+                <td><%= @book.profile.accessible %></td>
+                <td><%= octicon 'pencil', class:'rigth' %></td>
+                <% else %>
+                <td></td><td></td><td></td><td></td>
+                <td><%= link_to new_profile_path(@book), {class:'btn btn-md', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do %>
+                    <%= octicon 'plus', class:'rigth' %>
+                    <% end %>
+                </td>
+                <% end %>
               </tr>
-              <% else %>
-              <% end %>
             </tbody>
           </table>
       </div>
+      <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
     </div>
   </div>
 </div>
+
 <div class='container'>
   <div class='row'>
     <div class='col-md-4'></div>
