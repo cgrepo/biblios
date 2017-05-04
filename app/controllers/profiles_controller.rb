@@ -1,8 +1,19 @@
 class ProfilesController < ApplicationController
-    before_action :set_book, only: [:new_profile]
+    before_action :set_book, only: [:new_profile, :new, :create, :destroy]
+    def create
+    end
+    def destroy
+    end
+    def new
+        #@profile = @book.build_profile
+        respond_to do |format|
+            format.html
+            format.js
+        end
+    end
     
     def new_profile
-        #byebug
+        @profile = @book.build_profile
         respond_to do |format|
             format.html
             format.js

@@ -14,8 +14,15 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new", as: "login"
   delete "/logout" => "sessions#destroy", as: "logout"
   root to: 'welcome#index'
-  get '/books/:book_id/profiles/new_profile' => "profiles#new_profile", :as => :new_profile
-  resources :books 
+  #get '/books/:book_id/profiles/new_profile' => "profiles#new_profile", :as => :new_profile
+  resources :books do
+    resources :profiles, only: [:new, :create, :destroy]
+    # do
+    #   # collection do
+    #   #   get '/books/:book_id/profiles/new_profile' => "profiles#new_profile", :as => :new_profile
+    #   # end
+    # end
+  end
   # do
   #   resources :profiles
   #   # do
