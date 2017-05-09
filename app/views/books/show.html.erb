@@ -45,12 +45,19 @@
                   <td><%= @book.profile.volumen %></td>
                   <td><%= @book.profile.tome %></td>
                   <td><%= @book.profile.accessible %></td>
-                  <td><%= octicon 'pencil', class:'rigth' %></td>
+                  <td><%= link_to edit_book_profile_path(@book,@book.profile.id), 
+                          { id:'edbtn',class:'btn btn-md btn-default', :remote => true, 
+                            'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do %>
+                          <%= octicon 'pencil', class:'rigth' %>
+                      <% end %>
+                  </td>
                   <td><%= octicon 'trashcan', class:'rigth' %></td>
                 <% else %>
                 <td></td><td></td><td></td><td></td>
-                  <td><%= link_to new_book_profile_path(@book), {class:'btn btn-md', :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do %>
-                      <%= octicon 'plus', class:'rigth' %>
+                  <td><%= link_to new_book_profile_path(@book), 
+                        {class:'btn btn-md btn-default', :remote => true, 
+                        'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do %>
+                        <%= octicon 'plus', class:'rigth' %>
                       <% end %>
                   </td>
                 <% end %>

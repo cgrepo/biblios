@@ -9,6 +9,4 @@ $(document).on "turbolinks:load", ->
     $table.find('tbody tr td').css('align':'center')
     $table.on 'dblclick', 'td', ->
         alert $(this).text()
-    # $('#profile').hide()
-    # $('.octicon').click ->
-    #     $('#profile').fadeToggle()
+    
