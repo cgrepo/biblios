@@ -1,11 +1,18 @@
 class ProfilesController < ApplicationController
     before_action :set_book, only: [:new_profile, :new, :create, :destroy]
+    
     def create
+        byebug
+        if @book.create_profile(profile_params)
+            redirect_to @book, notice:'Ficha actualizada!'
+        else
+            redirect_to @book, alert:'Error al salvar la ficha!'
+        end
     end
+    
     def destroy
     end
     def new
-        #@profile = @book.build_profile
         respond_to do |format|
             format.html
             format.js

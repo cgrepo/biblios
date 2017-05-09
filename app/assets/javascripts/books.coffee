@@ -1,6 +1,5 @@
 $(document).on "turbolinks:load", ->
     $table = $('.tblCard')
-
     $table.removeClass('table-hover')
     $table.removeClass('table-striped')
     $table.find('thead th').css('color':'black')
