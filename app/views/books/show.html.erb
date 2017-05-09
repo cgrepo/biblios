@@ -51,7 +51,14 @@
                           <%= octicon 'pencil', class:'rigth' %>
                       <% end %>
                   </td>
-                  <td><%= octicon 'trashcan', class:'rigth' %></td>
+                  <td><%= link_to book_profile_path(@book,@book.profile.id), 
+                        method: :delete, 
+                        data:{confirm: 'Esta usted seguro?'},
+                        class:'btn btn-md btn-default' do %>
+                        <%= octicon 'trashcan', class:'rigth' %>
+                      <% end %>
+                      
+                  </td>
                 <% else %>
                 <td></td><td></td><td></td><td></td>
                   <td><%= link_to new_book_profile_path(@book), 
