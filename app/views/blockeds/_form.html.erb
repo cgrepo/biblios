@@ -1,0 +1,25 @@
+<%= bootstrap_form_for(@blocked, layout: :horizontal) do |f| %>
+  <% if @blocked.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blocked.errors.count, "error") %> prohibited this blocked from being saved:</h2>
+
+      <ul>
+      <% @blocked.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='container'>
+    <div class='row'>
+      <%= f.collection_select_with_bootstrap :subscriptor_id, Subscriptor.all, :id, :fullname, 
+        label:'Subscriptor', control_col:'col-xd col-md-4' %>
+        <%= f.text_field_with_bootstrap :end, label:'Bloqueo finaliza:', control_col:'col-xs col-md-2', class:'xdate' %>
+        <%= f.text_area_with_bootstrap :notes, label:'Comentarios' %>
+        <div class='col-md-4'></div>
+        <div class='col-xs col-md-4'>
+          <%= f.submit 'SALVAR', class:'btn btn-md btn-block be-border_heroku' %>  
+        </div>
+    </div>
+  </div>
+<% end %>

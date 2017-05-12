@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blockeds
   resources :subscriptors do
     get 'credential', to: 'subscriptors#buildCredential'
   end

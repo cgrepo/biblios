@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328211421) do
+ActiveRecord::Schema.define(version: 20170510205915) do
+
+  create_table "blockeds", force: :cascade do |t|
+    t.integer  "subscriptor_id"
+    t.date     "end"
+    t.text     "notes"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "blockeds", ["subscriptor_id"], name: "index_blockeds_on_subscriptor_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "isbn"

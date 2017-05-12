@@ -1,0 +1,34 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs col-md-4'>
+      <p>
+        <strong>Subscriptor:</strong>
+        <%= @blocked.subscriptor.fullname %>
+      </p>
+    </div>
+    <div class='col-xs col-md-3'>
+      <p>
+        <strong>End:</strong>
+        <%= @blocked.end %>
+      </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs col-md-8'>
+      <p>
+        <strong>Notes:</strong>
+        <%= @blocked.notes %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Edit', edit_blocked_path(@blocked), class:'btn btn-md btn-block be-purple_strong' %> 
+    </div>
+    <div class='col-xs-3 col-md-2'>
+      <%= link_to 'Back', blockeds_path, class:'btn btn-md btn-block be-purple_strong' %>
+    </div>
+  </div>
+</div>
