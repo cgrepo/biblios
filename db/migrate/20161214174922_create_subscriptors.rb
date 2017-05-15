@@ -4,7 +4,7 @@ class CreateSubscriptors < ActiveRecord::Migration
       t.string :account
       t.string :fullname
       t.references :group, index: true, foreign_key: true
-      t.references :scool, index: true, foreign_key: true
+      t.references :school, index: true, foreign_key: true
       t.string :email
       t.string :address
       t.string :colony
