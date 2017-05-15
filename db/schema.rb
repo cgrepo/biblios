@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510205915) do
+ActiveRecord::Schema.define(version: 20170515194255) do
 
   create_table "blockeds", force: :cascade do |t|
     t.integer  "subscriptor_id"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 20170510205915) do
   end
 
   add_index "books", ["library_id"], name: "index_books_on_library_id"
+
+  create_table "borroweds", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "subscriptor_id"
+    t.date     "outDate"
+    t.date     "returnDate"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "borroweds", ["book_id"], name: "index_borroweds_on_book_id"
+  add_index "borroweds", ["subscriptor_id"], name: "index_borroweds_on_subscriptor_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "description"
@@ -73,6 +85,18 @@ ActiveRecord::Schema.define(version: 20170510205915) do
 
   add_index "profiles", ["book_id"], name: "index_profiles_on_book_id"
 
+  create_table "reserveds", force: :cascade do |t|
+    t.integer  "book_id"
+    t.date     "startDate"
+    t.date     "finishDate"
+    t.integer  "subscriptor_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "reserveds", ["book_id"], name: "index_reserveds_on_book_id"
+  add_index "reserveds", ["subscriptor_id"], name: "index_reserveds_on_subscriptor_id"
+
   create_table "responsables", force: :cascade do |t|
     t.string   "fullname"
     t.string   "email"
@@ -83,6 +107,15 @@ ActiveRecord::Schema.define(version: 20170510205915) do
   end
 
   add_index "responsables", ["library_id"], name: "index_responsables_on_library_id"
+
+  create_table "returneds", force: :cascade do |t|
+    t.integer  "book_id"
+    t.date     "in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "returneds", ["book_id"], name: "index_returneds_on_book_id"
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"

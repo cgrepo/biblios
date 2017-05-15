@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 
+  startDate: 2017-05-15
+  finishDate: 2017-05-15
+  subscriptor_id: 
+
+two:
+  book_id: 
+  startDate: 2017-05-15
+  finishDate: 2017-05-15
+  subscriptor_id: 

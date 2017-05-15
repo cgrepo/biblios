@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-xs-12 col-md-12'>
-      <h1>Usuarios Bloqueados</h1>
+      <h1>Subscriptores Bloqueados</h1>
     </div>
   </div>
 </div>
@@ -13,29 +13,33 @@
     <div class='col-xs col-md-8'>
       <div class="table-responsive">
         <table class="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th>Subscriptor</th>
-            <th>Fecha Termino</th>
-            <th>Notas</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @blockeds.each do |blocked| %>
+          <thead>
             <tr>
-              <td><%= blocked.subscriptor.fullname %></td>
-              <td><%= blocked.end %></td>
-              <td><%= blocked.notes %></td>
-              <td><%= link_to edit_blocked_path(blocked) do %>
-                  <%= octicon 'pencil', class:'rigth btn btn-md btn-default' %>
-                  <% end %>
-              </td>
-              <td><%= link_to 'Destroy', blocked, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Subscriptor</th>
+              <th>Fecha Termino</th>
+              <th>Notas</th>
+              <th colspan="2"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @blockeds.each do |blocked| %>
+              <tr>
+                <td><%= blocked.subscriptor.fullname %></td>
+                <td><%= blocked.end %></td>
+                <td><%= blocked.notes %></td>
+                <td><%= link_to edit_blocked_path(blocked), class:'btn btn-xs' do %>
+                    <%= octicon 'pencil', class:'rigth' %>
+                    <% end %>
+                </td>
+                <td><%= link_to blocked, method: :delete, data: { confirm: 'Eliminar de bloqueados?' }, class:'btn btn-xs'  do %>
+                      <%= octicon 'trashcan', class:'rigth' %>
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
