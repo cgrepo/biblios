@@ -8,6 +8,9 @@
     <div class='col-xs-3 col-md-3'>
       <%= link_to 'Agregar Libro', new_book_path, class:'btn btn-md btn-default btn-block'  %>
     </div>
+    <div class='col-xs-3 col-md-3'>
+      <%= link_to 'Prestamos', borrows_path, class:'btn btn-md btn-default btn-block'  %>
+    </div>
   </div>
 </div>
 <div class='container'>
@@ -60,9 +63,6 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col-xs-3 col-md-3'>
-      <%= link_to 'Agregar Libro', new_book_path, class:'btn btn-xs btn-default btn-block'  %>
-    </div>
     <div class='col-xs col-md-8'><%= will_paginate @books, renderer: BootstrapPagination::Rails %></div>
   </div>
 </div>

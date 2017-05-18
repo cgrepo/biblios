@@ -1,0 +1,16 @@
+<div class='container'>
+    <div class='row'>
+        <%= bootstrap_form_tag gremote:true, url: :get_byName_borrows, method:'get', :html => {id:'title_srch'}  do |f| %>
+            <%= f.form_group :cryteria, label:{text:'Buscar por:'} do %>
+            <br>
+                <%= f.radio_button :cryteria_level, 0, label: 'Titulo', inline: true %>
+                <%= f.radio_button :cryteria_level, 1, label: 'ISBN', inline: true %>
+                <%= f.radio_button :cryteria_level, 2, label: 'Autor', inline: true %>
+            <% end %>
+            <%#= f.text_field_with_bootstrap :title, label:'Busqueda de Libro por nombre' %>
+            <%#= f.methods.grep /radio/ %>
+            <%#= f.collection_check_boxes_with_bootstrap :skills, Skill.all, :id, :name %>
+            <%= submit_tag 'Buscar', class:'btn btn-default btn-md srch' %>
+        <% end %>
+    </div>
+</div>

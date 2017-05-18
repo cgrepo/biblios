@@ -61,9 +61,9 @@
                   </td>
                 <% else %>
                 <td></td><td></td><td></td><td></td>
-                  <td><%= link_to new_book_profile_path(@book), 
-                        {class:'btn btn-md btn-default', :remote => true, 
-                        'data-toggle' =>  "modal", 'data-target' => '#modal-window'} do %>
+                  <td><%= link_to new_book_profile_path(@book), {
+                          class:'btn btn-md btn-default', :remote => true, 
+                          'data-toggle' =>  "modal", 'data-target' => '#modal-window' } do %>
                         <%= octicon 'plus', class:'rigth' %>
                       <% end %>
                   </td>
@@ -76,7 +76,6 @@
   </div>
      
 </div>
-
 <div class='container'>
   <div class='row'>
     <div class='col-md-4'></div>
@@ -88,5 +87,4 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="modal-window" role="dialog"></div>
