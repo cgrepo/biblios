@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :borrows do
     collection do
       get 'getByTitle'
+      get 'getByISBN'
+      get 'getByAutor'
     end
   end
 end

@@ -14,5 +14,17 @@ class BorrowsController < ApplicationController
       format.js {}
     end
   end
+  def getByISBN
+    respond_to do |format|
+      format.html { render :partial=> 'getByISBN'}
+      format.js {}
+    end
+  end
+  def getByAutor
+    respond_to do |format|
+      format.html { render :partial=> 'getByAutor'}
+      format.js {}
+    end
+  end
   
 end
