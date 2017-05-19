@@ -6,9 +6,11 @@ class BorrowsController < ApplicationController
   def new
   end
   
-  def get_byName
-    @books = Concessionary.where("name LIKE ?",'%'+params[:name]+'%')
+  def getByTitle
+    #@books = Book.where("title LIKE ?",'%'+params[:title]+'%')
+    #byebug
     respond_to do |format|
+      format.html { render :partial=> 'getByTitle'}
       format.js {}
     end
   end

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   resources :borrows do
     collection do
-      get 'get_byName'
+      get 'getByTitle'
     end
   end
 end
