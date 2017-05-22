@@ -12,5 +12,6 @@ $(document).on "turbolinks:load", ->
             type:'GET'
             url:url
             success: (data) ->
+                $('#holder').empty()
                 $('#holder').append(data)
             
