@@ -6,24 +6,29 @@ class BorrowsController < ApplicationController
   def new
   end
   
+  
   def getByTitle
-    #@books = Book.where("title LIKE ?",'%'+params[:title]+'%')
-    #byebug
     respond_to do |format|
-      format.html { render :partial=> 'getByTitle'}
-      format.js {}
+      format.html { render :partial => 'getByTitle'}
     end
   end
+  
+  def findByTitle
+    @books = Book.where("title LIKE ?",'%'+params[:title]+'%')
+    respond_to do |format|  
+      format.html {render :partial => 'findByTitle'}
+    end
+    
+  end
+  
   def getByISBN
     respond_to do |format|
       format.html { render :partial=> 'getByISBN'}
-      format.js {}
     end
   end
   def getByAutor
     respond_to do |format|
       format.html { render :partial=> 'getByAutor'}
-      format.js {}
     end
   end
   

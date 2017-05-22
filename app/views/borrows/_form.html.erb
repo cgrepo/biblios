@@ -2,14 +2,13 @@
     <div class='row'>
         <%= bootstrap_form_tag  :html => {id:'title_srch'}  do |f| %>
             <%= f.form_group :cryteria, label:{text:'Buscar por:'} do %>
-            <br>
+                <br>
                 <%= f.radio_button :cryteria_level, 0, label: 'Titulo', inline: true %>
                 <%= f.radio_button :cryteria_level, 1, label: 'ISBN', inline: true %>
                 <%= f.radio_button :cryteria_level, 2, label: 'Autor', inline: true %>
             <% end %>
         <% end %>
     </div>
-    <div id='holder'>
-        
-    </div>
+    <div id='search_holder'></div>
+    <div id='data_holder'></div>
 </div>

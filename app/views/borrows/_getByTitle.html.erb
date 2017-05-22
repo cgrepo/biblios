@@ -1,6 +1,8 @@
-<div class='col-xs col-md-6'>
-    <%= bootstrap_form_tag    do |f| %>
-        <%= f.text_field_with_bootstrap :title, label:'Titulo' %>
-        <%= f.submit %>
-    <% end %>
+<div class='row'>
+    <div class='col-xs col-md-6'>
+        <%= bootstrap_form_tag  url: :findByTitle_borrows, :html => {id:'commitSearchByTitle'} do |f| %>
+            <%= f.text_field_with_bootstrap :title, label:'Titulo' %>
+            <%= f.submit 'BUSCAR' %>
+        <% end %>
+    </div>
 </div>

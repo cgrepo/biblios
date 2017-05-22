@@ -21,11 +21,12 @@ Rails.application.routes.draw do
   resources :books do
     resources :profiles, only: [:new, :create, :destroy, :edit, :update]
   end
-  resources :borrows do
+  resources :borrows, only: [:new, :getByTitle, :getByISBN, :getByAutor, :findByTitle] do
     collection do
       get 'getByTitle'
       get 'getByISBN'
       get 'getByAutor'
+      get 'findByTitle'
     end
   end
 end
