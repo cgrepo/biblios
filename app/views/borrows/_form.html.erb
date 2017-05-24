@@ -1,13 +1,24 @@
 <div class='container'>
     <div class='row'>
-        <%= bootstrap_form_tag  :html => {id:'title_srch'}  do |f| %>
-            <%= f.form_group :cryteria, label:{text:'Buscar por:'} do %>
-                <br>
-                <%= f.radio_button :cryteria_level, 0, label: 'Titulo', inline: true %>
-                <%= f.radio_button :cryteria_level, 1, label: 'ISBN', inline: true %>
-                <%= f.radio_button :cryteria_level, 2, label: 'Autor', inline: true %>
+        <div class='col-xs col-md-6'>
+            <%= bootstrap_form_tag  :html => {id:'title_srch'}  do |f| %>
+                <%= f.form_group :cryteria, label:{text:'Buscar por:'} do %>
+                    <br>
+                    <%= f.radio_button :cryteria_level, 0, label: 'Titulo', inline: true %>
+                    <%= f.radio_button :cryteria_level, 1, label: 'ISBN', inline: true %>
+                    <%= f.radio_button :cryteria_level, 2, label: 'Autor', inline: true %>
+                <% end %>
             <% end %>
-        <% end %>
+        </div>
+        <div class='col-xs col-md-6'>
+            <%= bootstrap_form_tag  :html => {id:'subscriptor_srch'}  do |f| %>
+                <%= f.form_group :subscriptor, label:{text:'Buscar por:'} do %>
+                    <br>
+                    <%= f.radio_button :subscriptor_level, 0, label: 'Cuenta', inline: true %>
+                    <%= f.radio_button :subscriptor_level, 1, label: 'Nombre', inline: true %>
+                <% end %>
+            <% end %>
+        </div>
     </div>
     <div id='search_holder'></div>
     <div id='data_holder'></div>
