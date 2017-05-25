@@ -1,5 +1,5 @@
 $(document).on "turbolinks:load", ->
-    
+
     $('input[type=radio][name="[subscriptor_level]"]').change ->
         op = $('input[type=radio][name="[subscriptor_level]"]:checked').val()
         if op == '0'
@@ -12,7 +12,8 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
-
+                #$('#search_rigth_holder').addClass('corners')
+    
     $('input[type=radio][name="[cryteria_level]"]').change ->
         op = $('input[type=radio][name="[cryteria_level]"]:checked').val()
         switch op
@@ -28,30 +29,38 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
+                #$('#search_left_holder').addClass('corners')
 
-$(document).on 'submit', 'form', (e) ->
-   e.preventDefault()
-   searchMethod = $(this).attr('id')
-   switch searchMethod
-        when 'commitSearchByTitle'
-            $.ajax
-                type:'GET'
-                url:'/borrows/findByTitle'
-                data:
-                    title: $('#title').val()
-                success: (data) ->
-                    $('#book_holder').empty()
-                    $('#book_holder').append(data)
-        when 'commitSearchByName'
-            $.ajax
-                type:'GET'
-                url:'/borrows/findByName'
-                data:
-                    name: $('#name').val()
-                success: (data) ->
-                    $('#subs_holder').empty()
-                    $('#subs_holder').append(data)
-                    
+
+    $(document).on 'submit', 'form', (e) ->
+       e.preventDefault()
+       searchMethod = $(this).attr('id')
+       switch searchMethod
+            when 'commitSearchByTitle'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByTitle'
+                    data:
+                        title: $('#title').val()
+                    success: (data) ->
+                        $('#book_holder').empty()
+                        $('#book_holder').append(data)
+                        $('.tblBooks').on 'dblclick', 'td', ->
+                            alert $(this).text()
+            when 'commitSearchByName'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByName'
+                    data:
+                        name: $('#name').val()
+                    success: (data) ->
+                        $('#subs_holder').empty()
+                        $('#subs_holder').append(data)
+                        $('.tblSubscriptors').on 'dblclick', 'td', ->
+                            alert $(this).text()
+    
+# $('#tblSubscriptors').on 'dblclick', 'td', ->
+#     alert $(this).text()
 #  $(document).on 'submit', 'form#commitSearchByTitle', (e) ->
 #   e.preventDefault()
 #   alert

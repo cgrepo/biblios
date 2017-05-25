@@ -225,33 +225,9 @@ tr th:last-child {
 }
 .title-small { color: #141517; font-size: 16px; font-weight: 400; line-height: 23px; margin: 6px 0 0;
 }
-/*
-.btn-warning {
-  &.btn-inverse {
-    @include button-variant($btn-warning-bg, $btn-warning-color, $btn-warning-bg);
-    &:hover {
-      @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-    }
-  }
-  &.btn-transparent {
-    @include button-variant($btn-warning-bg, transparent, $btn-warning-bg);
-    &:hover {
-      @include button-variant($btn-warning-bg, darken($btn-warning-bg, 25%), $btn-warning-bg);
-    }
-  }
+
+.corners {
+  //border-radius: 25px;
+  border: 2px solid #414141;
+  padding: 20px; 
 }
-.btn-danger {
-  &.btn-inverse {
-    @include button-variant($btn-danger-bg, $btn-danger-color, $btn-danger-bg);
-    &:hover {
-      @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-    }
-  }
-  &.btn-transparent {
-    @include button-variant($btn-danger-bg, transparent, $btn-danger-bg);
-    &:hover {
-      @include button-variant($btn-danger-bg, darken($btn-danger-bg, 25%), $btn-danger-bg);
-    }
-  }
-} 
-*/

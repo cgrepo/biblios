@@ -39,7 +39,6 @@ class BorrowsController < ApplicationController
   end
   
   def findByName
-    byebug
     @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:name]+'%')
     respond_to do |format|  
       format.html {render :partial => 'findSubByName'}
