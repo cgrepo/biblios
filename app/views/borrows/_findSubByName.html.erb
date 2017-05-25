@@ -1,0 +1,18 @@
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Cuenta</th>
+                <th>Nombre Completo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @subscriptors.each do |subscriptor| %>
+                <tr>
+                    <td><%= subscriptor.account %></td>
+                    <td><%= subscriptor.fullname %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

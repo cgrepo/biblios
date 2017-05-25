@@ -24,12 +24,11 @@ Rails.application.routes.draw do
   resources :borrows, only: [:new, :getByTitle, :getByISBN, :getByAutor, :findByTitle] do
     collection do
       get 'getByTitle'
+      get 'findByTitle'
       get 'getByISBN'
       get 'getByAutor'
-      get 'findByTitle'
-      get 'getSubscriptorAcc'
-      get 'getSubscriptorName'
-      get 'findByAcc'
+      get 'getByAcc'
+      get 'getByName'
       get 'findByName'
     end
   end

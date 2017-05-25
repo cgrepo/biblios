@@ -32,15 +32,17 @@ class BorrowsController < ApplicationController
     end
   end
   
-  def getSubscriptorName
+  def getByName
     respond_to do |format|
-      format.html { render :partial=> 'getSubscriptorName'}
+      format.html { render :partial=> 'getByName'}
     end
   end
+  
   def findByName
-    @subscriptors = Subscriptor.where("name LIKE ?",'%'+params[:title]+'%')
+    byebug
+    @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:name]+'%')
     respond_to do |format|  
-      format.html {render :partial => 'findByName'}
+      format.html {render :partial => 'findSubByName'}
     end
   end
   
@@ -50,10 +52,5 @@ class BorrowsController < ApplicationController
     end
   end
   
-  def findByAcc
-    @subscriptors = Subscriptor.where("name LIKE ?",'%'+params[:title]+'%')
-    respond_to do |format|  
-      format.html {render :partial => 'findByName'}
-    end
-  end
+
 end
