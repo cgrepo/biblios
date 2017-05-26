@@ -12,7 +12,6 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
-                #$('#search_rigth_holder').addClass('corners')
     
     $('input[type=radio][name="[cryteria_level]"]').change ->
         op = $('input[type=radio][name="[cryteria_level]"]:checked').val()
@@ -29,7 +28,6 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
-                #$('#search_left_holder').addClass('corners')
 
 
     $(document).on 'submit', 'form', (e) ->
@@ -43,10 +41,15 @@ $(document).on "turbolinks:load", ->
                     data:
                         title: $('#title').val()
                     success: (data) ->
-                        $('#book_holder').empty()
-                        $('#book_holder').append(data)
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')
                         $('.tblBooks').on 'dblclick', 'td', ->
                             alert $(this).text()
+                        # $('#book_holder').empty()
+                        # $('#book_holder').append(data)
+                        
+                        
+        
             when 'commitSearchByName'
                 $.ajax
                     type:'GET'
