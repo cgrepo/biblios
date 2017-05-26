@@ -1,5 +1,9 @@
 $(document).on "turbolinks:load", ->
-
+    #$('input[type=radio]:not(:checked)')
+    #$('input').not(':checked')
+    #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+    $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
+    $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
     $('input[type=radio][name="[subscriptor_level]"]').change ->
         op = $('input[type=radio][name="[subscriptor_level]"]:checked').val()
         if op == '0'
@@ -29,7 +33,6 @@ $(document).on "turbolinks:load", ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
 
-
     $(document).on 'submit', 'form', (e) ->
        e.preventDefault()
        searchMethod = $(this).attr('id')
@@ -43,13 +46,13 @@ $(document).on "turbolinks:load", ->
                     success: (data) ->
                         $('#modal-window').html(data)
                         $('#modal-window').modal('show')
-                        $('.tblBooks').on 'dblclick', 'td', ->
-                            alert $(this).text()
+                        $('.tblBooks').on 'dblclick', 'tr', ->
+                            alert $(this).find('td:first').text()
+                            #x = $(this).parent().parent().children().index($(this).parent()) #get row index
+                            #y = $(this).parent().children().index($(this)) #get column index fixed to 0
+                            #alert $(this).rows[x].cells[0].text()
                         # $('#book_holder').empty()
                         # $('#book_holder').append(data)
-                        
-                        
-        
             when 'commitSearchByName'
                 $.ajax
                     type:'GET'
@@ -57,10 +60,13 @@ $(document).on "turbolinks:load", ->
                     data:
                         name: $('#name').val()
                     success: (data) ->
-                        $('#subs_holder').empty()
-                        $('#subs_holder').append(data)
-                        $('.tblSubscriptors').on 'dblclick', 'td', ->
-                            alert $(this).text()
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')
+                        $('.tblSubscriptors').on 'dblclick', 'tr', ->
+                            alert $(this).find('td:first').text()
+                        #$('#subs_holder').empty()
+                        #$('#subs_holder').append(data)
+                        
     
 # $('#tblSubscriptors').on 'dblclick', 'td', ->
 #     alert $(this).text()

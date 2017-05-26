@@ -1,18 +1,31 @@
-<div class="table-responsive">
-    <table class="table tblSubscriptors">
-        <thead>
-            <tr>
-                <th>Cuenta</th>
-                <th>Nombre Completo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @subscriptors.each do |subscriptor| %>
-                <tr>
-                    <td><%= subscriptor.account %></td>
-                    <td><%= subscriptor.fullname %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">SELECCIONAR LIBRO</h4>
+    </div>
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table tblSubscriptors">
+                <thead>
+                    <tr>
+                        <th>Cuenta</th>
+                        <th>Nombre Completo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @subscriptors.each do |subscriptor| %>
+                        <tr>
+                            <td><%= subscriptor.account %></td>
+                            <td><%= subscriptor.fullname %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
 </div>

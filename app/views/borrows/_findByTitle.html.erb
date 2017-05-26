@@ -9,6 +9,7 @@
         <table class="table tblBooks">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Titulo</th>
               <th>Autor</th>
             </tr>
@@ -16,6 +17,7 @@
           <tbody>
             <% @books.each do |book| %>
             <tr>
+              <td><%= book.id %></td>
               <td><%= book.title %></td>
               <td><%= book.autor %></td>
             </tr>
