@@ -1,0 +1,33 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">LIBRO POR AUTOR</h4>
+    </div>
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table tblBooks">
+                <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Titulo</th>
+                      <th>ISBN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <% @books.each do |book| %>
+                    <tr>
+                      <td><%= book.id %></td>
+                      <td><%= book.title %></td>
+                      <td><%= book.autor %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

@@ -26,8 +26,11 @@ Rails.application.routes.draw do
       get 'getByTitle'
       get 'findByTitle'
       get 'getByISBN'
+      get 'findByISBN'
       get 'getByAutor'
+      get 'findByAutor'
       get 'getByAcc'
+      get 'findByAcc'
       get 'getByName'
       get 'findByName'
     end

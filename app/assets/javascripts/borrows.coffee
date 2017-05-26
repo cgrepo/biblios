@@ -16,7 +16,6 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
-    
     $('input[type=radio][name="[cryteria_level]"]').change ->
         op = $('input[type=radio][name="[cryteria_level]"]:checked').val()
         switch op
@@ -32,7 +31,6 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
-
     $(document).on 'submit', 'form', (e) ->
        e.preventDefault()
        searchMethod = $(this).attr('id')
@@ -42,7 +40,8 @@ $(document).on "turbolinks:load", ->
                     type:'GET'
                     url:'/borrows/findByTitle'
                     data:
-                        title: $('#title').val()
+                        borrow:
+                            title: $('#title').val()
                     success: (data) ->
                         $('#modal-window').html(data)
                         $('#modal-window').modal('show')
@@ -58,7 +57,8 @@ $(document).on "turbolinks:load", ->
                     type:'GET'
                     url:'/borrows/findByName'
                     data:
-                        name: $('#name').val()
+                        borrow:
+                            name: $('#name').val()
                     success: (data) ->
                         $('#modal-window').html(data)
                         $('#modal-window').modal('show')
@@ -66,8 +66,40 @@ $(document).on "turbolinks:load", ->
                             alert $(this).find('td:first').text()
                         #$('#subs_holder').empty()
                         #$('#subs_holder').append(data)
-                        
-    
+            when 'commitSearchBySubAcc'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByAcc'
+                    data:
+                        borrow:
+                            account: $('#account').val()
+                    success: (data) ->
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')
+            when 'commitSearchByISBN'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByISBN'
+                    data:
+                        borrow:
+                            isbn: $('#isbn').val()
+                    success: (data) ->
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')  
+                        $('.tblBooks').on 'dblclick', 'tr', ->
+                            alert $(this).find('td:first').text()
+            when 'commitSearchByAutor'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByAutor'
+                    data:
+                        borrow:
+                            autor: $('#autor').val()
+                    success: (data) ->
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')  
+                        $('.tblBooks').on 'dblclick', 'tr', ->
+                            alert $(this).find('td:first').text()            
 # $('#tblSubscriptors').on 'dblclick', 'td', ->
 #     alert $(this).text()
 #  $(document).on 'submit', 'form#commitSearchByTitle', (e) ->
