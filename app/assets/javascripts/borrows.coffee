@@ -2,6 +2,7 @@ $(document).on "turbolinks:load", ->
     #$('input[type=radio]:not(:checked)')
     #$('input').not(':checked')
     #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+    $('.row-results').hide()
     $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
     $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
     $('input[type=radio][name="[subscriptor_level]"]').change ->
@@ -46,7 +47,14 @@ $(document).on "turbolinks:load", ->
                         $('#modal-window').html(data)
                         $('#modal-window').modal('show')
                         $('.tblBooks').on 'dblclick', 'tr', ->
-                            alert $(this).find('td:first').text()
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                            #$(this).closest("tr").remove()
+                            
+                            #alert $(this).find('td:first').text()
                             #x = $(this).parent().parent().children().index($(this).parent()) #get row index
                             #y = $(this).parent().children().index($(this)) #get column index fixed to 0
                             #alert $(this).rows[x].cells[0].text()
