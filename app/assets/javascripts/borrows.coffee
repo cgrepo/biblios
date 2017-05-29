@@ -52,7 +52,7 @@ $(document).on "turbolinks:load", ->
                             $('.tblBHolder').removeClass('table-hover')
                             $('.tblBHolder').removeClass('table-striped')
                             $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                            #$(this).closest("tr").remove()
+                            $(this).closest("tr").remove()
                             
                             #alert $(this).find('td:first').text()
                             #x = $(this).parent().parent().children().index($(this).parent()) #get row index
@@ -60,6 +60,40 @@ $(document).on "turbolinks:load", ->
                             #alert $(this).rows[x].cells[0].text()
                         # $('#book_holder').empty()
                         # $('#book_holder').append(data)
+            when 'commitSearchByISBN'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByISBN'
+                    data:
+                        borrow:
+                            isbn: $('#isbn').val()
+                    success: (data) ->
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')  
+                        $('.tblBooks').on 'dblclick', 'tr', ->
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                            $(this).closest("tr").remove()
+            when 'commitSearchByAutor'
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/findByAutor'
+                    data:
+                        borrow:
+                            autor: $('#autor').val()
+                    success: (data) ->
+                        $('#modal-window').html(data)
+                        $('#modal-window').modal('show')  
+                        $('.tblBooks').on 'dblclick', 'tr', ->
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                            $(this).closest("tr").remove()
             when 'commitSearchByName'
                 $.ajax
                     type:'GET'
@@ -84,30 +118,6 @@ $(document).on "turbolinks:load", ->
                     success: (data) ->
                         $('#modal-window').html(data)
                         $('#modal-window').modal('show')
-            when 'commitSearchByISBN'
-                $.ajax
-                    type:'GET'
-                    url:'/borrows/findByISBN'
-                    data:
-                        borrow:
-                            isbn: $('#isbn').val()
-                    success: (data) ->
-                        $('#modal-window').html(data)
-                        $('#modal-window').modal('show')  
-                        $('.tblBooks').on 'dblclick', 'tr', ->
-                            alert $(this).find('td:first').text()
-            when 'commitSearchByAutor'
-                $.ajax
-                    type:'GET'
-                    url:'/borrows/findByAutor'
-                    data:
-                        borrow:
-                            autor: $('#autor').val()
-                    success: (data) ->
-                        $('#modal-window').html(data)
-                        $('#modal-window').modal('show')  
-                        $('.tblBooks').on 'dblclick', 'tr', ->
-                            alert $(this).find('td:first').text()            
 # $('#tblSubscriptors').on 'dblclick', 'td', ->
 #     alert $(this).text()
 #  $(document).on 'submit', 'form#commitSearchByTitle', (e) ->

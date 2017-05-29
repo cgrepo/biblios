@@ -2,7 +2,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">LIBRO POR ISBN</h4>
+      <h4 class="modal-title">LIBRO POR ISBN <%= @book.isbn %></h4>
     </div>
     <div class="modal-body">
         <div class="table-responsive">
@@ -11,14 +11,14 @@
                     <tr>
                       <th>ID</th>
                       <th>Titulo</th>
-                      <th>ISBN</th>
+                      <th>Autor</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                       <td><%= @book.id %></td>
                       <td><%= @book.title %></td>
-                      <td><%= @book.isbn %></td>
+                      <td><%= @book.autor %></td>
                     </tr>
                 </tbody>
             </table>
