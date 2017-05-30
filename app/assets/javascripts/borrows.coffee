@@ -44,12 +44,18 @@ $(document).on "turbolinks:load", ->
                 $('#modal-window').html(data)
                 $('#modal-window').modal('show')
                 $('.tblBooks').on 'dblclick', 'tr', ->
-                    $('.tblBHolder tbody').append($(this).clone())
-                    $('.row-results').show()
-                    $('.tblBHolder').removeClass('table-hover')
-                    $('.tblBHolder').removeClass('table-striped')
-                    $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                    $(this).closest("tr").remove()
+                    if checkRows('books') < 3
+                        $('.tblBHolder tbody').append($(this).clone())
+                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                        $('.row-results').show()
+                        $('.tblBHolder').removeClass('table-hover')
+                        $('.tblBHolder').removeClass('table-striped')
+                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                        $(this).closest("tr").remove()
+                        $('.tblBHolder tr td:last').on 'dblclick', ->
+                            $(this).closest("tr").remove()
+                    else
+                        alert 'no se pueden agregar mas de 3 libros por Usuario' 
     $(document).on 'submit', 'form#commitSearchByISBN', (e) ->
         e.preventDefault()
         $.ajax
@@ -62,12 +68,18 @@ $(document).on "turbolinks:load", ->
                 $('#modal-window').html(data)
                 $('#modal-window').modal('show')  
                 $('.tblBooks').on 'dblclick', 'tr', ->
-                    $('.tblBHolder tbody').append($(this).clone())
-                    $('.row-results').show()
-                    $('.tblBHolder').removeClass('table-hover')
-                    $('.tblBHolder').removeClass('table-striped')
-                    $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                    $(this).closest("tr").remove()
+                    if checkRows('books') < 3
+                        $('.tblBHolder tbody').append($(this).clone())
+                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                        $('.row-results').show()
+                        $('.tblBHolder').removeClass('table-hover')
+                        $('.tblBHolder').removeClass('table-striped')
+                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                        $(this).closest("tr").remove()
+                        $('.tblBHolder tr td:last').on 'dblclick', ->
+                            $(this).closest("tr").remove()
+                    else
+                        alert 'no se pueden agregar mas de 3 libros por Usuario'
     $(document).on 'submit', 'form#commitSearchByAutor', (e) ->
         e.preventDefault()
         $.ajax
@@ -80,12 +92,20 @@ $(document).on "turbolinks:load", ->
                 $('#modal-window').html(data)
                 $('#modal-window').modal('show')  
                 $('.tblBooks').on 'dblclick', 'tr', ->
-                    $('.tblBHolder tbody').append($(this).clone())
-                    $('.row-results').show()
-                    $('.tblBHolder').removeClass('table-hover')
-                    $('.tblBHolder').removeClass('table-striped')
-                    $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                    $(this).closest("tr").remove()
+                    if checkRows('books') < 3
+                        # al momento se checara si el usuario tiene otros prestamos ? o cuando se haga commit ?
+                        $('.tblBHolder tbody').append($(this).clone())
+                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                        $('.row-results').show()
+                        $('.tblBHolder').removeClass('table-hover')
+                        $('.tblBHolder').removeClass('table-striped')
+                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                        $(this).closest("tr").remove()
+                        $('.tblBHolder tr td:last').on 'dblclick', ->
+                            $(this).closest("tr").remove()
+                    else
+                        alert 'no se pueden agregar mas de 3 libros por Usuario'
+                    
     $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
         e.preventDefault()
         $.ajax
@@ -107,6 +127,8 @@ $(document).on "turbolinks:load", ->
                     $(this).closest("tr").remove()
                     $('.tblSHolder tr td:last').on 'dblclick', ->
                         $(this).closest("tr").remove()
+            error: (data) ->
+                alert 'El Numero de cuenta no fue encontrado'
     $(document).on 'submit', 'form#commitSearchByName', (e) ->
         e.preventDefault()
         $.ajax
@@ -131,15 +153,13 @@ $(document).on "turbolinks:load", ->
                              $(this).closest("tr").remove()
                     else
                         alert 'solo se permite un usuario'
-                    
-                    #alert $(this).find('td:first').text()
-                        #$('#subs_holder').empty()
-                        #$('#subs_holder').append(data)
-    
+            error: (data) ->
+                alert data
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;
-  
+    else
+        return $('.tblBHolder tbody').children('tr').length;
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect    
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()
@@ -255,3 +275,6 @@ checkRows =(opt) ->
     #         $('#subs_holder').empty()
     #         $('#subs_holder').append(data)
     # return
+ #alert $(this).find('td:first').text()
+                        #$('#subs_holder').empty()
+                        #$('#subs_holder').append(data)
