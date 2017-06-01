@@ -55,6 +55,12 @@
                   </tbody>
                 </table>
               </div>
+              <div class='row'>
+                  <%= bootstrap_form_tag layout: :inline, label_col: "col-sm-2", control_col: "col-sm-4" do |f| %>
+                    <%= f.text_field_with_bootstrap :outDate, label:'Salida', class:'xdate' %>
+                    <%= f.text_field_with_bootstrap :returnDate, label:'Regreso', class:'xdate' %>
+                  <% end %>
+              </div>
         </div>
     </div>
 </div>

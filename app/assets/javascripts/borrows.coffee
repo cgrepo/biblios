@@ -13,15 +13,15 @@ $(document).on "turbolinks:load", ->
                 url:'/borrows'
                 data:
                     borrows:idbooks,
-                    account:idsub
+                    account:idsub,
+                    outDate: $('#outDate').val(),
+                    returnDate: $('#returnDateD').val()
                 success: (data) ->
                     alert data
                 error: (data) ->
                     alert data
         else
             alert 'Error para guardar debe contener un usuario y al menos un libro'
-       
-        
     $('.row-results').hide()
     $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
     $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)

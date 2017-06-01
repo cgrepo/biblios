@@ -6,6 +6,12 @@ class BorrowsController < ApplicationController
   end
   def create
     byebug
+    @books = Book.where(id:params[:borrows])
+    @books.each do |book|
+      
+    end
+    #iterate over the book array
+    #set the out-in dates
   end
   def getByTitle
     respond_to do |format|
@@ -66,6 +72,6 @@ class BorrowsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_params
-      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor)
+      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate)
     end
 end
