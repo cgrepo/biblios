@@ -4,6 +4,9 @@ class BorrowsController < ApplicationController
   end
   def new
   end
+  def create
+    byebug
+  end
   def getByTitle
     respond_to do |format|
       format.html { render :partial => 'getByTitle'}

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'borrows/index'
-
-  get 'borrowed/index'
-
   resources :blockeds
   resources :subscriptors do
     get 'credential', to: 'subscriptors#buildCredential'
@@ -21,7 +17,12 @@ Rails.application.routes.draw do
   resources :books do
     resources :profiles, only: [:new, :create, :destroy, :edit, :update]
   end
-  resources :borrows, only: [:new, :getByTitle, :getByISBN, :getByAutor, :findByTitle] do
+  resources :borrows, only: 
+  [ :index,:new, :create, 
+    :getByTitle,  :getByISBN,  :getByAutor,  :getByAcc,  :getByName, 
+    :findByTitle, :findByISBN, :findByAutor, :findByAcc, :findByName
+    
+  ] do
     collection do
       get 'getByTitle'
       get 'findByTitle'

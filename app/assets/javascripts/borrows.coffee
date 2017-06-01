@@ -2,6 +2,26 @@ $(document).on "turbolinks:load", ->
     #$('input[type=radio]:not(:checked)')
     #$('input').not(':checked')
     #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+    $('.launch').on 'click', ->
+        if checkRows('subscriptors') > 0 && checkRows('books') > 0
+            idbooks = []
+            $('.tblBHolder tbody tr').each ->
+                idbooks.push($(this).find('td:first').text())
+            idsub = $('.tblSHolder tbody tr:first').find('td:first').text()
+            $.ajax
+                type:'POST'
+                url:'/borrows'
+                data:
+                    borrows:idbooks,
+                    account:idsub
+                success: (data) ->
+                    alert data
+                error: (data) ->
+                    alert data
+        else
+            alert 'Error para guardar debe contener un usuario y al menos un libro'
+       
+        
     $('.row-results').hide()
     $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
     $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
@@ -105,7 +125,6 @@ $(document).on "turbolinks:load", ->
                             $(this).closest("tr").remove()
                     else
                         alert 'no se pueden agregar mas de 3 libros por Usuario'
-                    
     $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
         e.preventDefault()
         $.ajax
@@ -160,6 +179,7 @@ checkRows =(opt) ->
         return $('.tblSHolder tbody').children('tr').length;
     else
         return $('.tblBHolder tbody').children('tr').length;
+
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect    
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()

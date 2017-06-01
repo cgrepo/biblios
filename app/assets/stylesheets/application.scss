@@ -72,7 +72,7 @@ tr th:last-child {
   //background: #89589C;
   background: #AF9BC5;
   color: #F6FFFF;
-}
+} 
 .be-font_purple{
   background-color: #7958A9;
   color: #F6FFFF;
@@ -218,16 +218,25 @@ tr th:last-child {
     }
   }
 }
-.card{float: left; width:100%
-}
-.card-block{
-  padding:0 10px 10px;
-}
-.title-small { color: #141517; font-size: 16px; font-weight: 400; line-height: 23px; margin: 6px 0 0;
-}
-
-.corners {
-  //border-radius: 25px;
+.card{ float: left; width:100%}
+.card-block{  padding:0 10px 10px;}
+.title-small { color: #141517; font-size: 16px; font-weight: 400; line-height: 23px; margin: 6px 0 0; }
+.corners {//border-radius: 25px;
   border: 2px solid #414141;
   padding: 20px; 
+}
+
+.btn-hero {
+   -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  background: #AF9BC5;
+  padding: 6px 20px 6px 20px;
+  text-decoration: none;
+  
+}
+
+.btn-hero:hover {
+  background: #7958A9;
+  text-decoration: none;
 }
