@@ -18,7 +18,7 @@ $(document).on "turbolinks:load", ->
                     outDate: $('#outDate').val(),
                     returnDate: $('#returnDate').val()
                 success: (data) ->
-                    alert data
+                    #alert data
                 error: (data) ->
                     alert data
         else

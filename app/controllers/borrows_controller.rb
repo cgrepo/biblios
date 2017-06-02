@@ -5,6 +5,7 @@ class BorrowsController < ApplicationController
   def new
   end
   def create
+    setFailFlag(false)
     @books = Book.where(id:params[:borrows])
     @subscriptor = Subscriptor.find_by(account:params[:account])
     @books.each do |book|
@@ -13,17 +14,10 @@ class BorrowsController < ApplicationController
       @borrow.subscriptor = @subscriptor
       @borrow.outDate = params[:outDate]
       @borrow.returnDate = params[:returnDate]
-      byebug
-      # unless @borrow.save
-      #   format js { alert 'nose creo' }
-      #   #format.html  { redirect_to @entero, notice: 'Entero fue creado.' }
-      #   #format.json { render :show, status: :created, location: @entero }
-      #   #format.js
-      # #else
-      # #  format.html { render :new }
-      #   #format.json { render json: @borrow.errors, status: :unprocessable_entity }
-      # end
+      #byebug
+      setFailFlag(true) unless @borrow.save
     end
+    redirect_to borrows_url, notice: 'Prestamo(s) cargados correctamente' unless @failFlag
   end
   def getByTitle
     respond_to do |format|
@@ -85,5 +79,9 @@ class BorrowsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_paramsreturnDate
       params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate)
+    end
+    
+    def setFailFlag(val)
+      @failFlag = val
     end
 end
