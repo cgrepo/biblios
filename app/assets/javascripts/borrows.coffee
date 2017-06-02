@@ -8,6 +8,7 @@ $(document).on "turbolinks:load", ->
             $('.tblBHolder tbody tr').each ->
                 idbooks.push($(this).find('td:first').text())
             idsub = $('.tblSHolder tbody tr:first').find('td:first').text()
+            #alert $('#returnDate').val()
             $.ajax
                 type:'POST'
                 url:'/borrows'
@@ -15,7 +16,7 @@ $(document).on "turbolinks:load", ->
                     borrows:idbooks,
                     account:idsub,
                     outDate: $('#outDate').val(),
-                    returnDate: $('#returnDateD').val()
+                    returnDate: $('#returnDate').val()
                 success: (data) ->
                     alert data
                 error: (data) ->

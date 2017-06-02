@@ -5,13 +5,25 @@ class BorrowsController < ApplicationController
   def new
   end
   def create
-    byebug
     @books = Book.where(id:params[:borrows])
+    @subscriptor = Subscriptor.find_by(account:params[:account])
     @books.each do |book|
-      
+      @borrow = Borrowed.new()
+      @borrow.book = book
+      @borrow.subscriptor = @subscriptor
+      @borrow.outDate = params[:outDate]
+      @borrow.returnDate = params[:returnDate]
+      byebug
+      # unless @borrow.save
+      #   format js { alert 'nose creo' }
+      #   #format.html  { redirect_to @entero, notice: 'Entero fue creado.' }
+      #   #format.json { render :show, status: :created, location: @entero }
+      #   #format.js
+      # #else
+      # #  format.html { render :new }
+      #   #format.json { render json: @borrow.errors, status: :unprocessable_entity }
+      # end
     end
-    #iterate over the book array
-    #set the out-in dates
   end
   def getByTitle
     respond_to do |format|
@@ -71,7 +83,7 @@ class BorrowsController < ApplicationController
   
   private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def borrow_params
+    def borrow_paramsreturnDate
       params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate)
     end
 end
