@@ -12,15 +12,19 @@ $(document).on "turbolinks:load", ->
             $.ajax
                 type:'POST'
                 url:'/borrows'
+                #dataType:'json'
                 data:
                     borrows:idbooks,
                     account:idsub,
                     outDate: $('#outDate').val(),
                     returnDate: $('#returnDate').val()
                 success: (data) ->
-                    #alert data
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')
+                    # if data.errors
+                    #     alert data.errors
                 error: (data) ->
-                    alert data
+                    console.log data.errors
         else
             alert 'Error para guardar debe contener un usuario y al menos un libro'
     $('.row-results').hide()
