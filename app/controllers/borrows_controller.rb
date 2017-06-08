@@ -7,26 +7,27 @@ class BorrowsController < ApplicationController
   def create
     setFailFlag(false)
     @subscriptor = Subscriptor.find_by(account:params[:account])
-    
     respond_to do |format|
-      unless Borrowed.subscriptor_limit_reached?(@subscriptor)
         @books = Book.where(id:params[:borrows])
-        @books.each do |book|
-          @borrow = Borrowed.new()
-          @borrow.book = book
-          @borrow.subscriptor = @subscriptor
-          @borrow.outDate = params[:outDate]
-          @borrow.returnDate = params[:returnDate]
-          setFailFlag(true) unless @borrow.save
+        @books.each_with_index do |book,index|
+          unless Borrowed.subscriptor_limit_reached?(@subscriptor)
+            @borrow = Borrowed.new()
+            @borrow.book = book
+            @borrow.subscriptor = @subscriptor
+            @borrow.outDate = params[:outDate]
+            @borrow.returnDate = params[:returnDate]
+            setFailFlag(true) unless @borrow.save
+          else
+            #------
+              #format.json { render text:'Error el usuario ya tienes 3 prestamos!', status: :bad_request}
+              #format.json { render :json => { :errors => 'Error el usuario ya tienes 3 prestamos!'}}
+              #format.html { render  text:'Error el usuario ya tienes 3 prestamos!'}
+            format.html {render :partial => 'limitError', locals:{:latest => @books[index-1].id} }
+            setFailFlag(true)
+            break
+          end
         end
         format.html { redirect_to borrows_url, notice: 'Prestamo(s) cargados correctamente' unless @failFlag }
-      else
-        #format.json { render text:'Error el usuario ya tienes 3 prestamos!', status: :bad_request}
-        #format.json { render :json => { :errors => 'Error el usuario ya tienes 3 prestamos!'}}
-        #format.html { render  text:'Error el usuario ya tienes 3 prestamos!'}
-        format.html {render :partial => 'limitError' }
-        
-      end
     end
   end
   def getByTitle

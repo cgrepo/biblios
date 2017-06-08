@@ -21,6 +21,12 @@ $(document).on "turbolinks:load", ->
                 success: (data) ->
                     $('#modal-window').html(data)
                     $('#modal-window').modal('show')
+                    $('.modal-body p#latestSaved').hide()
+                    $indx = $.trim($('p').text());
+                    $(".tblBHolder tbody tr td:contains('"+$indx+"')").closest("tr").remove()
+
+                    #console.log $('p').text()
+                    #alert $('p').text()
                     # if data.errors
                     #     alert data.errors
                 error: (data) ->
