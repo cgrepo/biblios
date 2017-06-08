@@ -193,11 +193,21 @@ checkRows =(opt) ->
 getReturnDay=->
     d = new Date()
     rday = d.getDate()+5
+    rmonth = d.getMonth()+1
+    ryear = d.getFullYear()
+    rdate = new Date(rmonth+'/'+rday+'/'+ryear)
+    dayNames= ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    if dayNames[rdate.getDay()]=='Sábado'
+        rday = rday + 2
+        rdate = new Date(rmonth+'/'+rday+'/'+ryear)
+    if dayNames[rdate.getDay()]=='Domingo'
+        rday = rday + 1
+        rdate = new Date(rmonth+'/'+rday+'/'+ryear)
     $('input#outDate').attr('disabled',true)
     $('input#returnDate').attr('disabled',true)
     $('input#outDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
-    $('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date(d.getMonth()+'/'+rday+'/'+d.getYear())))
-    dayNames= ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    $('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', rdate))
+    
 
     #$('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
     #alert dayNames[d.getDay()]
