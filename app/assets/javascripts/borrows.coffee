@@ -2,6 +2,7 @@ $(document).on "turbolinks:load", ->
     #$('input[type=radio]:not(:checked)')
     #$('input').not(':checked')
     #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+    getReturnDay()
     $('.launch').on 'click', ->
         if checkRows('subscriptors') > 0 && checkRows('books') > 0
             idbooks = []
@@ -24,7 +25,6 @@ $(document).on "turbolinks:load", ->
                     $('.modal-body p#latestSaved').hide()
                     $indx = $.trim($('p').text());
                     $(".tblBHolder tbody tr td:contains('"+$indx+"')").closest("tr").remove()
-
                     #console.log $('p').text()
                     #alert $('p').text()
                     # if data.errors
@@ -190,7 +190,17 @@ checkRows =(opt) ->
         return $('.tblSHolder tbody').children('tr').length;
     else
         return $('.tblBHolder tbody').children('tr').length;
+getReturnDay=->
+    d = new Date()
+    rday = d.getDate()+5
+    $('input#outDate').attr('disabled',true)
+    $('input#returnDate').attr('disabled',true)
+    $('input#outDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
+    $('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date(d.getMonth()+'/'+rday+'/'+d.getYear())))
+    dayNames= ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 
+    #$('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
+    #alert dayNames[d.getDay()]
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect    
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()
