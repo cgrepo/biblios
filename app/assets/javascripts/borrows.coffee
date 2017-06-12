@@ -3,6 +3,8 @@ $(document).on "turbolinks:load", ->
     #$('input').not(':checked')
     #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
     getReturnDay()
+    $("label[for='returnDate']").on 'dblclick', ->
+       $('input#returnDate').attr('disabled',false)
     $('.launch').on 'click', ->
         if checkRows('subscriptors') > 0 && checkRows('books') > 0
             idbooks = []
@@ -65,6 +67,7 @@ $(document).on "turbolinks:load", ->
                 $('#search_left_holder').append(data)
     $(document).on 'submit', 'form#commitSearchByTitle', (e) ->
         e.preventDefault()
+        mySpin('s')
         $.ajax
             type:'GET'
             url:'/borrows/findByTitle'
@@ -87,8 +90,14 @@ $(document).on "turbolinks:load", ->
                             $(this).closest("tr").remove()
                     else
                         alert 'no se pueden agregar mas de 3 libros por Usuario' 
+                mySpin('f')
+            error:  (data) ->
+                console.log data
+                mySpin('f')
+                alert 'El Numero de cuenta no fue encontrado'
     $(document).on 'submit', 'form#commitSearchByISBN', (e) ->
         e.preventDefault()
+        mySpin('s')
         $.ajax
             type:'GET'
             url:'/borrows/findByISBN'
@@ -111,8 +120,14 @@ $(document).on "turbolinks:load", ->
                             $(this).closest("tr").remove()
                     else
                         alert 'no se pueden agregar mas de 3 libros por Usuario'
+                mySpin('f')
+            error:  (data) ->
+                console.log data
+                mySpin('f')
+                alert 'Datos no encontrados'
     $(document).on 'submit', 'form#commitSearchByAutor', (e) ->
         e.preventDefault()
+        mySpin('s')
         $.ajax
             type:'GET'
             url:'/borrows/findByAutor'
@@ -136,8 +151,14 @@ $(document).on "turbolinks:load", ->
                             $(this).closest("tr").remove()
                     else
                         alert 'no se pueden agregar mas de 3 libros por Usuario'
+                mySpin('f')
+            error:  (data) ->
+                console.log data
+                mySpin('f')
+                alert 'Datos no encontrados'
     $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
         e.preventDefault()
+        mySpin('s')
         $.ajax
             type:'GET'
             url:'/borrows/findByAcc'
@@ -157,10 +178,14 @@ $(document).on "turbolinks:load", ->
                     $(this).closest("tr").remove()
                     $('.tblSHolder tr td:last').on 'dblclick', ->
                         $(this).closest("tr").remove()
-            error: (data) ->
+                mySpin('f')
+            error:  (data) ->
+                console.log data
+                mySpin('f')
                 alert 'El Numero de cuenta no fue encontrado'
     $(document).on 'submit', 'form#commitSearchByName', (e) ->
         e.preventDefault()
+        mySpin('s')
         $.ajax
             type:'GET'
             url:'/borrows/findByName'
@@ -183,8 +208,11 @@ $(document).on "turbolinks:load", ->
                              $(this).closest("tr").remove()
                     else
                         alert 'solo se permite un usuario'
-            error: (data) ->
-                alert data
+                mySpin('f')
+            error:  (data) ->
+                console.log data
+                mySpin('f')
+                alert 'El Numero de cuenta no fue encontrado'
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;
@@ -211,6 +239,20 @@ getReturnDay=->
 
     #$('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
     #alert dayNames[d.getDay()]
+mySpin=(opt) ->
+    if opt == 's'
+        $('#spinnerContainer').spin#('small','purple')
+             lines: 9
+             length: 7
+             width: 8
+             radius: 6
+             color: 'purple'
+            # speed: 1
+             trail: 60
+             shadow: true
+    else
+         $('#spinnerContainer').spin false
+        
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect    
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()
