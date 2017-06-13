@@ -46,6 +46,7 @@ $(document).on "turbolinks:load", ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
                 $('.tblSHolder tbody tr:last').remove()
+                $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
             error: (data) ->
                 alert 'errore encontrados' + data
     $('input[type=radio][name="[cryteria_level]"]').change ->
@@ -177,6 +178,7 @@ $(document).on "turbolinks:load", ->
                     $(this).closest("tr").remove()
                     $('.tblSHolder tr td:last').on 'dblclick', ->
                         $(this).closest("tr").remove()
+                    $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
                 mySpin('f')
             error:  (data) ->
                 console.log data
