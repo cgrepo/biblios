@@ -85,7 +85,6 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByAcc'}
     end    
   end
-  
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_paramsreturnDate

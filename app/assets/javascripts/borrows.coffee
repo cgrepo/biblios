@@ -46,7 +46,7 @@ $(document).on "turbolinks:load", ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
                 $('.tblSHolder tbody tr:last').remove()
-                $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
+                cryteriaEnabler()
             error: (data) ->
                 alert 'errore encontrados' + data
     $('input[type=radio][name="[cryteria_level]"]').change ->
@@ -168,7 +168,6 @@ $(document).on "turbolinks:load", ->
                 $('#modal-window').html(data)
                 $('#modal-window').modal('show')
                 $('.tblSubscriptors').on 'dblclick', 'tr', ->
-
                     $('.tblSHolder tbody').append($(this).clone())
                     $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
                     $('.row-results').show()
@@ -178,7 +177,8 @@ $(document).on "turbolinks:load", ->
                     $(this).closest("tr").remove()
                     $('.tblSHolder tr td:last').on 'dblclick', ->
                         $(this).closest("tr").remove()
-                    $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
+                        cryteriaEnabler()
+                    cryteriaEnabler()
                 mySpin('f')
             error:  (data) ->
                 console.log data
@@ -207,9 +207,10 @@ $(document).on "turbolinks:load", ->
                         $(this).closest("tr").remove()
                         $('.tblSHolder tr td:last').on 'dblclick', ->
                              $(this).closest("tr").remove()
-                        $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
+                             cryteriaEnabler()
                     else
                         alert 'solo se permite un usuario'
+                    cryteriaEnabler()
                 mySpin('f')
             error:  (data) ->
                 console.log data
@@ -259,7 +260,12 @@ setUp= ->
     $('.row-results').hide()
     $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
     $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
-
+cryteriaEnabler=->
+    alert checkRows('subscriptors')
+    if checkRows('subscriptors') == 0
+        $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
+    else
+        $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
     
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->
