@@ -1,7 +1,5 @@
 $(document).on "turbolinks:load", ->
-    #$('input[type=radio]:not(:checked)')
-    #$('input').not(':checked')
-    #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+    setUp()
     getReturnDay()
     $("label[for='returnDate']").on 'dblclick', ->
        $('input#returnDate').attr('disabled',false)
@@ -35,9 +33,6 @@ $(document).on "turbolinks:load", ->
                     console.log data.errors
         else
             alert 'Error para guardar debe contener un usuario y al menos un libro'
-    $('.row-results').hide()
-    $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
-    $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
     $('input[type=radio][name="[subscriptor_level]"]').change ->
         op = $('input[type=radio][name="[subscriptor_level]"]:checked').val()
         if op == '0'
@@ -50,6 +45,9 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_rigth_holder').empty()
                 $('#search_rigth_holder').append(data)
+                $('.tblSHolder tbody tr:last').remove()
+            error: (data) ->
+                alert 'errore encontrados' + data
     $('input[type=radio][name="[cryteria_level]"]').change ->
         op = $('input[type=radio][name="[cryteria_level]"]:checked').val()
         switch op
@@ -65,7 +63,7 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
-    $(document).on 'submit', 'form#commitSearchByTitle', (e) ->
+    $(document).on 'submit', 'form#commitSearchByTitle',  (e) ->
         e.preventDefault()
         mySpin('s')
         $.ajax
@@ -95,7 +93,7 @@ $(document).on "turbolinks:load", ->
                 console.log data
                 mySpin('f')
                 alert 'El Numero de cuenta no fue encontrado'
-    $(document).on 'submit', 'form#commitSearchByISBN', (e) ->
+    $(document).on 'submit', 'form#commitSearchByISBN',   (e) ->
         e.preventDefault()
         mySpin('s')
         $.ajax
@@ -125,7 +123,7 @@ $(document).on "turbolinks:load", ->
                 console.log data
                 mySpin('f')
                 alert 'Datos no encontrados'
-    $(document).on 'submit', 'form#commitSearchByAutor', (e) ->
+    $(document).on 'submit', 'form#commitSearchByAutor',  (e) ->
         e.preventDefault()
         mySpin('s')
         $.ajax
@@ -169,6 +167,7 @@ $(document).on "turbolinks:load", ->
                 $('#modal-window').html(data)
                 $('#modal-window').modal('show')
                 $('.tblSubscriptors').on 'dblclick', 'tr', ->
+
                     $('.tblSHolder tbody').append($(this).clone())
                     $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
                     $('.row-results').show()
@@ -183,7 +182,7 @@ $(document).on "turbolinks:load", ->
                 console.log data
                 mySpin('f')
                 alert 'El Numero de cuenta no fue encontrado'
-    $(document).on 'submit', 'form#commitSearchByName', (e) ->
+    $(document).on 'submit', 'form#commitSearchByName',   (e) ->
         e.preventDefault()
         mySpin('s')
         $.ajax
@@ -206,6 +205,7 @@ $(document).on "turbolinks:load", ->
                         $(this).closest("tr").remove()
                         $('.tblSHolder tr td:last').on 'dblclick', ->
                              $(this).closest("tr").remove()
+                        $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
                     else
                         alert 'solo se permite un usuario'
                 mySpin('f')
@@ -252,8 +252,14 @@ mySpin=(opt) ->
              shadow: true
     else
          $('#spinnerContainer').spin false
-        
-# el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect    
+setUp= ->
+    $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
+    $('.row-results').hide()
+    $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
+    $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
+
+    
+# el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()
     #   searchMethod = $(this).attr('id')
@@ -340,7 +346,7 @@ mySpin=(opt) ->
     #                 success: (data) ->
     #                     $('#modal-window').html(data)
     #                     $('#modal-window').modal('show')
-# comentada tienen distintas funciones pero no se usaron
+    # comentada tienen distintas funciones pero no se usaron
     # $('#tblSubscriptors').on 'dblclick', 'td', ->
     #     alert $(this).text()
     #  $(document).on 'submit', 'form#commitSearchByTitle', (e) ->
@@ -368,6 +374,9 @@ mySpin=(opt) ->
     #         $('#subs_holder').empty()
     #         $('#subs_holder').append(data)
     # return
- #alert $(this).find('td:first').text()
+    #alert $(this).find('td:first').text()
                         #$('#subs_holder').empty()
                         #$('#subs_holder').append(data)
+    #$('input[type=radio]:not(:checked)')
+    #$('input').not(':checked')
+    #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
