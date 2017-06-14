@@ -70,8 +70,10 @@ class BorrowsController < ApplicationController
   end
   def findByName
     @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:borrow][:name]+'%')
-    
-    getRents
+    @rents = []
+    @subscriptors.each do |subscriptor|
+      @rents << Borrowed.all.where(subscriptor:subscriptor).count
+    end
     respond_to do |format|  
       format.html {render :partial => 'findSubByName'}
     end
@@ -83,9 +85,10 @@ class BorrowsController < ApplicationController
   end
   def findByAcc
     @subscriptor = Subscriptor.find_by account:params[:borrow][:account]
+    @rents = []
+    @rents << Borrowed.all.where(subscriptor:@subscriptor).count
     respond_to do |format|  
-      format.html {render :partial => 'findSubByAcc', 
-                   locals:{:rents =>Borrowed.all.where(subscriptor:@subscriptor).count}}
+      format.html {render :partial => 'findSubByAcc'}
     end    
   end
   private
@@ -96,14 +99,5 @@ class BorrowsController < ApplicationController
     
     def setFailFlag(val)
       @failFlag = val
-    end
-    
-    def getRents
-      @rents = []
-      @subscriptors.each do |subscriptor|
-        byebug
-        @rents << Borrowed.all.where(subscriptor:subscriptor).count
-      end
-      
     end
 end

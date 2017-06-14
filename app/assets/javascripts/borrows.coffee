@@ -200,7 +200,6 @@ $(document).on "turbolinks:load", ->
                     $('.tblSubscriptors').on 'dblclick', 'tr', ->
                         if checkRows('subscriptors') == 0
                             $('.tblSHolder tbody').append($(this).clone())
-                            alert $(this).clone()
                             $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
                             $('.row-results').show()
                             $('.tblSHolder').removeClass('table-hover')
@@ -267,8 +266,15 @@ setUp= ->
 cryteriaEnabler=->
     if checkRows('subscriptors') == 0
         $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
+        $('#search_left_holder :input').attr('disabled',true)
     else
-        $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
+        if $('.tblSHolder tbody tr td:first').text() == '3'
+            alert 'el usuario ha llegado a su limite de rentas'
+            $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
+            $('#search_left_holder :input').attr('disabled',true)
+        else
+            $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
+            $('#search_left_holder :input').attr('disabled',false)
     
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->

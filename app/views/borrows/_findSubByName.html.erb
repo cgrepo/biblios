@@ -15,9 +15,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @subscriptors.each do |subscriptor| %>
+                    <% @subscriptors.each_with_index do |subscriptor,index| %>
                         <tr>
-                            <td><%#= rents %></td>
+                            <td><%= @rents[index] %></td>
                             <td><%= subscriptor.account %></td>
                             <td><%= subscriptor.fullname %></td>
                         </tr>
