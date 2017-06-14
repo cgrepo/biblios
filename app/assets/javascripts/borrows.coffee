@@ -186,36 +186,40 @@ $(document).on "turbolinks:load", ->
                 alert 'El Numero de cuenta no fue encontrado'
     $(document).on 'submit', 'form#commitSearchByName',   (e) ->
         e.preventDefault()
-        mySpin('s')
-        $.ajax
-            type:'GET'
-            url:'/borrows/findByName'
-            data:
-                borrow:
-                    name: $('#name').val()
-            success: (data) ->
-                $('#modal-window').html(data)
-                $('#modal-window').modal('show')
-                $('.tblSubscriptors').on 'dblclick', 'tr', ->
-                    if checkRows('subscriptors') == 0
-                        $('.tblSHolder tbody').append($(this).clone())
-                        $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
-                        $('.row-results').show()
-                        $('.tblSHolder').removeClass('table-hover')
-                        $('.tblSHolder').removeClass('table-striped')
-                        $('.tblSHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                        $(this).closest("tr").remove()
-                        $('.tblSHolder tr td:last').on 'dblclick', ->
-                             $(this).closest("tr").remove()
-                             cryteriaEnabler()
-                    else
-                        alert 'solo se permite un usuario'
-                    cryteriaEnabler()
-                mySpin('f')
-            error:  (data) ->
-                console.log data
-                mySpin('f')
-                alert 'El Numero de cuenta no fue encontrado'
+        unless $('#name').val()==''
+            mySpin('s')
+            $.ajax
+                type:'GET'
+                url:'/borrows/findByName'
+                data:
+                    borrow:
+                        name: $('#name').val()
+                success: (data) ->
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')
+                    $('.tblSubscriptors').on 'dblclick', 'tr', ->
+                        if checkRows('subscriptors') == 0
+                            $('.tblSHolder tbody').append($(this).clone())
+                            alert $(this).clone()
+                            $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                            $('.row-results').show()
+                            $('.tblSHolder').removeClass('table-hover')
+                            $('.tblSHolder').removeClass('table-striped')
+                            $('.tblSHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
+                            $(this).closest("tr").remove()
+                            $('.tblSHolder tr td:last').on 'dblclick', ->
+                                 $(this).closest("tr").remove()
+                                 cryteriaEnabler()
+                        else
+                            alert 'solo se permite un usuario'
+                        cryteriaEnabler()
+                    mySpin('f')
+                error:  (data) ->
+                    console.log data
+                    mySpin('f')
+                    alert 'El Numero de cuenta no fue encontrado'
+        else
+            alert 'proporcione un nombre'    
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;
@@ -261,7 +265,6 @@ setUp= ->
     $('input[type=radio][name="[subscriptor_level]"]').attr('checked',false)
     $('input[type=radio][name="[cryteria_level]"]').attr('checked',false)
 cryteriaEnabler=->
-    alert checkRows('subscriptors')
     if checkRows('subscriptors') == 0
         $('input[type=radio][name="[cryteria_level]"]').attr('disabled',true)
     else
