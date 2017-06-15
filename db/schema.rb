@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515194255) do
+ActiveRecord::Schema.define(version: 20170615185650) do
 
   create_table "blockeds", force: :cascade do |t|
     t.integer  "subscriptor_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170515194255) do
     t.date     "returnDate"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.boolean  "returned"
   end
 
   add_index "borroweds", ["book_id"], name: "index_borroweds_on_book_id"
