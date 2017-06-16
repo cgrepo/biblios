@@ -9,7 +9,6 @@ $(document).on "turbolinks:load", ->
             $('.tblBHolder tbody tr').each ->
                 idbooks.push($(this).find('td:first').text())
             idsub = $('.tblSHolder tbody tr:first td:eq(1)').text()
-            #alert $('#returnDate').val()
             $.ajax
                 type:'POST'
                 url:'/borrows'

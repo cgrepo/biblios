@@ -17,12 +17,9 @@ Rails.application.routes.draw do
   resources :books do
     resources :profiles, only: [:new, :create, :destroy, :edit, :update]
   end
-  resources :borrows, only: 
-  [ :index,:new, :create, 
-    :getByTitle,  :getByISBN,  :getByAutor,  :getByAcc,  :getByName, 
-    :findByTitle, :findByISBN, :findByAutor, :findByAcc, :findByName
-    
-  ] do
+  resources :borrows, only: [ :index, :new, :create, :getByTitle,  :getByISBN,  :getByAutor,  
+  :getByAcc,  :getByName, :findByTitle, :findByISBN, :findByAutor, :findByAcc, :findByName,
+  :setReturned] do
     collection do
       get 'getByTitle'
       get 'findByTitle'
@@ -33,7 +30,7 @@ Rails.application.routes.draw do
       get 'getByAcc'
       get 'findByAcc'
       get 'getByName'
-      get 'findByName'
+      put 'setReturned'
     end
   end
 end

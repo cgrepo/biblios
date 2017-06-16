@@ -1,8 +1,20 @@
 class BorrowsController < ApplicationController
   def index
-    @borrows = Borrowed.all.order(:created_at).paginate(page: params[:page], per_page:20)
+    @borrows = Borrowed.all.where(returned:false).order(:created_at).paginate(page: params[:page], per_page:20)
   end
   def new
+  end
+  def setReturned
+    @borrow = Borrowed.find_by(:id => params[:borrow])
+    byebug
+    @borrow.returned = true
+    respond_to do |format|
+      if @borrow.save
+        format.html {redirect_to borrows_url, notice:'Libro entregado!'}
+      else
+        format.html {redirect_to borrows_url, flash[:error] = 'Error al salvar!'}
+      end
+    end
   end
   def create
     setFailFlag(false)
@@ -94,7 +106,7 @@ class BorrowsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_paramsreturnDate
-      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate)
+      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate, :borrow)
     end
     
     def setFailFlag(val)
