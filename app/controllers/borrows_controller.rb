@@ -84,7 +84,7 @@ class BorrowsController < ApplicationController
     @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:borrow][:name]+'%')
     @rents = []
     @subscriptors.each do |subscriptor|
-      @rents << Borrowed.all.where(subscriptor:subscriptor).count
+      @rents << Borrowed.all.where(subscriptor:subscriptor).where(returned:false).count
     end
     respond_to do |format|  
       format.html {render :partial => 'findSubByName'}
@@ -98,7 +98,7 @@ class BorrowsController < ApplicationController
   def findByAcc
     @subscriptor = Subscriptor.find_by account:params[:borrow][:account]
     @rents = []
-    @rents << Borrowed.all.where(subscriptor:@subscriptor).count
+    @rents << Borrowed.all.where(subscriptor:@subscriptor).where(returned:false).count
     respond_to do |format|  
       format.html {render :partial => 'findSubByAcc'}
     end    
