@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get 'getByAcc'
       get 'findByAcc'
       get 'getByName'
+      get 'findByName'
       put 'setReturned'
     end
   end

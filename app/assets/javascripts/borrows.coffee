@@ -156,33 +156,36 @@ $(document).on "turbolinks:load", ->
                 alert 'Datos no encontrados'
     $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
         e.preventDefault()
-        mySpin('s')
-        $.ajax
-            type:'GET'
-            url:'/borrows/findByAcc'
-            data:
-                borrow:
-                    account: $('#account').val()
-            success: (data) ->
-                $('#modal-window').html(data)
-                $('#modal-window').modal('show')
-                $('.tblSubscriptors').on 'dblclick', 'tr', ->
-                    $('.tblSHolder tbody').append($(this).clone())
-                    $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
-                    $('.row-results').show()
-                    $('.tblSHolder').removeClass('table-hover')
-                    $('.tblSHolder').removeClass('table-striped')
-                    $('.tblSHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                    $(this).closest("tr").remove()
-                    $('.tblSHolder tr td:last').on 'dblclick', ->
+        unless $('#acct').val()==''
+            mySpin('s')
+            $.ajax
+                type:'GET'
+                url:'/borrows/findByAcc'
+                data:
+                    borrow:
+                        account: $('#acct').val()
+                success: (data) ->
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')
+                    $('.tblSubscriptors').on 'dblclick', 'tr', ->
+                        $('.tblSHolder tbody').append($(this).clone())
+                        $('.tblSHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                        $('.row-results').show()
+                        $('.tblSHolder').removeClass('table-hover')
+                        $('.tblSHolder').removeClass('table-striped')
+                        $('.tblSHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
                         $(this).closest("tr").remove()
+                        $('.tblSHolder tr td:last').on 'dblclick', ->
+                            $(this).closest("tr").remove()
+                            cryteriaEnabler()
                         cryteriaEnabler()
-                    cryteriaEnabler()
-                mySpin('f')
-            error:  (data) ->
-                console.log data
-                mySpin('f')
-                alert 'El Numero de cuenta no fue encontrado'
+                    mySpin('f')
+                error:  (data) ->
+                    console.log data
+                    mySpin('f')
+                    alert 'El Numero de cuenta no fue encontrado'
+        else
+            alert 'proporcione un numero de cuenta'
     $(document).on 'submit', 'form#commitSearchByName',   (e) ->
         e.preventDefault()
         unless $('#name').val()==''
@@ -215,9 +218,10 @@ $(document).on "turbolinks:load", ->
                 error:  (data) ->
                     console.log data
                     mySpin('f')
-                    alert 'El Numero de cuenta no fue encontrado'
+                    alert 'la busqueda por nombre: ' + $('#name').val() + ' no arrojo resutados'
         else
-            alert 'proporcione un nombre'    
+            alert 'proporcione un nombre'
+
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;

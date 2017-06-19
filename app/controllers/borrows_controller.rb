@@ -6,7 +6,6 @@ class BorrowsController < ApplicationController
   end
   def setReturned
     @borrow = Borrowed.find_by(:id => params[:borrow])
-    byebug
     @borrow.returned = true
     respond_to do |format|
       if @borrow.save
@@ -28,6 +27,7 @@ class BorrowsController < ApplicationController
             @borrow.subscriptor = @subscriptor
             @borrow.outDate = params[:outDate]
             @borrow.returnDate = params[:returnDate]
+            @borrow.returned = false
             setFailFlag(true) unless @borrow.save
           else
             #------

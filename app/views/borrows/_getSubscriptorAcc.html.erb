@@ -1,4 +1,4 @@
 <%= bootstrap_form_tag  url: :findByTitle_borrows, :html => {id:'commitSearchBySubAcc'} do |f| %>
-    <%= f.text_field_with_bootstrap :account, label:'CUENTA' %>
+    <%= f.text_field_with_bootstrap :account, label:'CUENTA', id:'acct' %>
     <%= f.submit 'BUSCAR' %>
 <% end %>
