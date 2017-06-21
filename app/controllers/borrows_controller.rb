@@ -16,6 +16,8 @@ class BorrowsController < ApplicationController
     end
   end
   def create
+    
+    @borrows = []
     setFailFlag(false)
     @subscriptor = Subscriptor.find_by(account:params[:account])
     respond_to do |format|
@@ -28,13 +30,20 @@ class BorrowsController < ApplicationController
             @borrow.outDate = params[:outDate]
             @borrow.returnDate = params[:returnDate]
             @borrow.returned = false
-            setFailFlag(true) unless @borrow.save
+            unless @borrow.save
+              setFailFlag(true)
+            else
+              @borrows << book
+            end
+            
           else
             #------
               #format.json { render text:'Error el usuario ya tienes 3 prestamos!', status: :bad_request}
               #format.json { render :json => { :errors => 'Error el usuario ya tienes 3 prestamos!'}}
               #format.html { render  text:'Error el usuario ya tienes 3 prestamos!'}
-            format.html {render :partial => 'limitError', locals:{:latest => @books[index-1].id} }
+            format.html { render :partial => 'limitError', locals:{:savedBooks => @borrows
+            #@books[index-1].id
+            } }
             setFailFlag(true)
             break
           end

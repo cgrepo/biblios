@@ -21,9 +21,12 @@ $(document).on "turbolinks:load", ->
                 success: (data) ->
                     $('#modal-window').html(data)
                     $('#modal-window').modal('show')
-                    $('.modal-body p#latestSaved').hide()
-                    $indx = $.trim($('p').text());
-                    $(".tblBHolder tbody tr td:contains('"+$indx+"')").closest("tr").remove()
+                    $('.tblBorrowedBooks tbody tr').each ->
+                        $i = $(this).find('td:first').text()
+                        $(".tblBHolder tbody tr td:contains('"+$i+"')").closest("tr").remove()
+                    #$('.modal-body p#latestSaved').hide()
+                    #$indx = $.trim($('p').text())
+                    #$(".tblBHolder tbody tr td:contains('"+$indx+"')").closest("tr").remove()
                     #console.log $('p').text()
                     #alert $('p').text()
                     # if data.errors
@@ -278,7 +281,8 @@ cryteriaEnabler=->
         else
             $('input[type=radio][name="[cryteria_level]"]').attr('disabled',false)
             $('#search_left_holder :input').attr('disabled',false)
-    
+readRents=->
+    return parseInt($('.tblSHolder tbody tr:first td:first').text())
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()

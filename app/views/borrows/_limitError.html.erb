@@ -6,7 +6,27 @@
     </div>
     <div class="modal-body">
       <h2><span class='label label-md label-warning'>El usuario llego a su limite de prestamos!</span></h2>
-     <p id='latestSaved'><%=latest%> </p>
+      <p class='label label-md label-default'>Se realido el Prestamo Correcto en los siguientes Libros</p>
+      <div class="table-responsive">
+        <table class="table tblBorrowedBooks">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titulo</th>
+              <th>Autor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% savedBooks.each do |book| %>
+            <tr>
+              <td><%= book.id %></td>
+              <td><%= book.title %></td>
+              <td><%= book.autor %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
