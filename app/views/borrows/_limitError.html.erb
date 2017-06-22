@@ -5,27 +5,37 @@
       <h4 class="modal-title">ERROR(ES)</h4>
     </div>
     <div class="modal-body">
-      <h2><span class='label label-md label-warning'>El usuario llego a su limite de prestamos!</span></h2>
-      <p class='label label-md label-default'>Se realido el Prestamo Correcto en los siguientes Libros</p>
-      <div class="table-responsive">
-        <table class="table tblBorrowedBooks">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Titulo</th>
-              <th>Autor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% savedBooks.each do |book| %>
-            <tr>
-              <td><%= book.id %></td>
-              <td><%= book.title %></td>
-              <td><%= book.autor %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-xs col-md-4'>
+            <h2><span class='label label-md label-warning'>El usuario llego a su limite de prestamos !</span></h2>
+            <h2><span class='label label-md label-info'   >Prestamos validos en los siguientes Libros</span></h2>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs col-md-6'>
+                  <div class="table-responsive">
+                    <table class="table tblBorrowedBooks">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Titulo</th>
+                          <th>Autor</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% savedBooks.each do |book| %>
+                        <tr>
+                          <td><%= book.id %></td>
+                          <td><%= book.title %></td>
+                          <td><%= book.autor %></td>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
