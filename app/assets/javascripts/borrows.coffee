@@ -24,6 +24,10 @@ $(document).on "turbolinks:load", ->
                     $('.tblBorrowedBooks tbody tr').each ->
                         $i = $(this).find('td:first').text()
                         $(".tblBHolder tbody tr td:contains('"+$i+"')").closest("tr").remove()
+                    $('.tblSHolder tbody tr').remove()
+                    $('.tblBHolder tbody tr').remove()
+                    setUp()
+                    clearFrm()
                     #$('.modal-body p#latestSaved').hide()
                     #$indx = $.trim($('p').text())
                     #$(".tblBHolder tbody tr td:contains('"+$indx+"')").closest("tr").remove()
@@ -68,98 +72,101 @@ $(document).on "turbolinks:load", ->
                 $('#search_left_holder').append(data)
     $(document).on 'submit', 'form#commitSearchByTitle',  (e) ->
         e.preventDefault()
-        mySpin('s')
-        $.ajax
-            type:'GET'
-            url:'/borrows/findByTitle'
-            data:
-                borrow:
-                    title: $('#title').val()
-            success: (data) ->
-                $('#modal-window').html(data)
-                $('#modal-window').modal('show')
-                $('.tblBooks').on 'dblclick', 'tr', ->
-                    if checkRows('books') < 3
-                        $('.tblBHolder tbody').append($(this).clone())
-                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
-                        $('.row-results').show()
-                        $('.tblBHolder').removeClass('table-hover')
-                        $('.tblBHolder').removeClass('table-striped')
-                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                        $(this).closest("tr").remove()
-                        $('.tblBHolder tr td:last').on 'dblclick', ->
+        unless emptyInput($('#title'))
+            mySpin('s')
+            $.ajax
+                type:'GET'
+                url:'/borrows/findByTitle'
+                data:
+                    borrow:
+                        title: $('#title').val()
+                success: (data) ->
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')
+                    $('.tblBooks').on 'dblclick', 'tr', ->
+                        if checkRows('books') < 3
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
                             $(this).closest("tr").remove()
-                    else
-                        alert 'no se pueden agregar mas de 3 libros por Usuario' 
-                mySpin('f')
-            error:  (data) ->
-                console.log data
-                mySpin('f')
-                alert 'El Numero de cuenta no fue encontrado'
+                            $('.tblBHolder tr td:last').on 'dblclick', ->
+                                $(this).closest("tr").remove()
+                        else
+                            alert 'no se pueden agregar mas de 3 libros por Usuario' 
+                    mySpin('f')
+                error:  (data) ->
+                    console.log data
+                    mySpin('f')
+                    alert 'El Numero de cuenta no fue encontrado'
     $(document).on 'submit', 'form#commitSearchByISBN',   (e) ->
         e.preventDefault()
-        mySpin('s')
-        $.ajax
-            type:'GET'
-            url:'/borrows/findByISBN'
-            data:
-                borrow:
-                    isbn: $('#isbn').val()
-            success: (data) ->
-                $('#modal-window').html(data)
-                $('#modal-window').modal('show')  
-                $('.tblBooks').on 'dblclick', 'tr', ->
-                    if checkRows('books') < 3
-                        $('.tblBHolder tbody').append($(this).clone())
-                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
-                        $('.row-results').show()
-                        $('.tblBHolder').removeClass('table-hover')
-                        $('.tblBHolder').removeClass('table-striped')
-                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                        $(this).closest("tr").remove()
-                        $('.tblBHolder tr td:last').on 'dblclick', ->
+        unless emptyInput($('#isbn'))
+            mySpin('s')
+            $.ajax
+                type:'GET'
+                url:'/borrows/findByISBN'
+                data:
+                    borrow:
+                        isbn: $('#isbn').val()
+                success: (data) ->
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')  
+                    $('.tblBooks').on 'dblclick', 'tr', ->
+                        if checkRows('books') < 3
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
                             $(this).closest("tr").remove()
-                    else
-                        alert 'no se pueden agregar mas de 3 libros por Usuario'
-                mySpin('f')
-            error:  (data) ->
-                console.log data
-                mySpin('f')
-                alert 'Datos no encontrados'
+                            $('.tblBHolder tr td:last').on 'dblclick', ->
+                                $(this).closest("tr").remove()
+                        else
+                            alert 'no se pueden agregar mas de 3 libros por Usuario'
+                    mySpin('f')
+                error:  (data) ->
+                    console.log data
+                    mySpin('f')
+                    alert 'Datos no encontrados'
     $(document).on 'submit', 'form#commitSearchByAutor',  (e) ->
         e.preventDefault()
-        mySpin('s')
-        $.ajax
-            type:'GET'
-            url:'/borrows/findByAutor'
-            data:
-                borrow:
-                    autor: $('#autor').val()
-            success: (data) ->
-                $('#modal-window').html(data)
-                $('#modal-window').modal('show')  
-                $('.tblBooks').on 'dblclick', 'tr', ->
-                    if checkRows('books') < 3
-                        # al momento se checara si el usuario tiene otros prestamos ? o cuando se haga commit ?
-                        $('.tblBHolder tbody').append($(this).clone())
-                        $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
-                        $('.row-results').show()
-                        $('.tblBHolder').removeClass('table-hover')
-                        $('.tblBHolder').removeClass('table-striped')
-                        $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
-                        $(this).closest("tr").remove()
-                        $('.tblBHolder tr td:last').on 'dblclick', ->
+        unless emptyInput($('#autor'))
+            mySpin('s')
+            $.ajax
+                type:'GET'
+                url:'/borrows/findByAutor'
+                data:
+                    borrow:
+                        autor: $('#autor').val()
+                success: (data) ->
+                    $('#modal-window').html(data)
+                    $('#modal-window').modal('show')  
+                    $('.tblBooks').on 'dblclick', 'tr', ->
+                        if checkRows('books') < 3
+                            # al momento se checara si el usuario tiene otros prestamos ? o cuando se haga commit ?
+                            $('.tblBHolder tbody').append($(this).clone())
+                            $('.tblBHolder tbody tr:last').append('<td><a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash rmsub"></span></a></td>')
+                            $('.row-results').show()
+                            $('.tblBHolder').removeClass('table-hover')
+                            $('.tblBHolder').removeClass('table-striped')
+                            $('.tblBHolder').find('thead th').css('background-color':'rgba(0, 0, 0, 0.5)')
                             $(this).closest("tr").remove()
-                    else
-                        alert 'no se pueden agregar mas de 3 libros por Usuario'
-                mySpin('f')
-            error:  (data) ->
-                console.log data
-                mySpin('f')
-                alert 'Datos no encontrados'
+                            $('.tblBHolder tr td:last').on 'dblclick', ->
+                                $(this).closest("tr").remove()
+                        else
+                            alert 'no se pueden agregar mas de 3 libros por Usuario'
+                    mySpin('f')
+                error:  (data) ->
+                    console.log data
+                    mySpin('f')
+                    alert 'Datos no encontrados'
     $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
         e.preventDefault()
-        unless $('#acct').val()==''
+        unless emptyInput($('#account'))
             mySpin('s')
             $.ajax
                 type:'GET'
@@ -187,11 +194,9 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'El Numero de cuenta no fue encontrado'
-        else
-            alert 'proporcione un numero de cuenta'
     $(document).on 'submit', 'form#commitSearchByName',   (e) ->
         e.preventDefault()
-        unless $('#name').val()==''
+        unless emptyInput($('#name'))
             mySpin('s')
             $.ajax
                 type:'GET'
@@ -222,8 +227,6 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'la busqueda por nombre: ' + $('#name').val() + ' no arrojo resutados'
-        else
-            alert 'proporcione un nombre'
 
 checkRows =(opt) ->
     if opt == 'subscriptors'
@@ -247,8 +250,6 @@ getReturnDay=->
     $('input#returnDate').attr('disabled',true)
     $('input#outDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
     $('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', rdate))
-    
-
     #$('input#returnDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
     #alert dayNames[d.getDay()]
 mySpin=(opt) ->
@@ -283,6 +284,19 @@ cryteriaEnabler=->
             $('#search_left_holder :input').attr('disabled',false)
 readRents=->
     return parseInt($('.tblSHolder tbody tr:first td:first').text())
+clearFrm=->
+    $('#name').val('')
+    $('#isbn').val('')
+    $('#title').val('')
+    $('#autor').val('')
+    $('#account').val('')
+emptyInput=($e)->
+    if $e.val() == ''
+        alert 'debe proporcionar un dato [ ' + $e.attr('name') + ' ]'
+        return true
+    else
+        return false
+    
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()

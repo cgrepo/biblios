@@ -16,7 +16,6 @@ class BorrowsController < ApplicationController
     end
   end
   def create
-    
     @borrows = []
     setFailFlag(false)
     @subscriptor = Subscriptor.find_by(account:params[:account])
@@ -35,7 +34,6 @@ class BorrowsController < ApplicationController
             else
               @borrows << book
             end
-            
           else
             #------
               #format.json { render text:'Error el usuario ya tienes 3 prestamos!', status: :bad_request}
