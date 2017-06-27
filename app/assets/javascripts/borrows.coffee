@@ -253,6 +253,7 @@ $(document).on "turbolinks:load", ->
     $(document).on 'submit', 'form#searchSubscriptor',   (e) ->
          e.preventDefault()
          unless emptyInput($('#name'))
+            mySpin('s')
             $.ajax
                 type:'GET'
                 url:'/borrows/srchSubName'
@@ -261,7 +262,9 @@ $(document).on "turbolinks:load", ->
                         name: $('#name').val()
                 success: (data) ->
                     $('#borrowedTblBody').html(data)
+                    mySpin('f')
                 error: (data) ->
+                    mySpin('f')
              
 
 #----HELP 2 FORM    
