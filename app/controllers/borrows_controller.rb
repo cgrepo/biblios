@@ -110,10 +110,26 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByAcc'}
     end    
   end
+  def orBorrows
+    
+    case params[:order][:index]
+      when 'Libro'
+        @borrows = Borrowed.where(returned:false).order(:book_id)
+      when 'Subscriptor'
+        @borrows = Borrowed.where(returned:false).order(:subscriptor_id)
+      when 'Fecha salida'
+        @borrows = Borrowed.where(returned:false).order(:outDate)
+      when 'Fecha Regreso'
+        @borrows = Borrowed.where(returned:false).order(:returnDate)
+    end
+    respond_to do |format|  
+      format.html {render :partial => 'ordered'}
+    end 
+  end
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_paramsreturnDate
-      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate, :borrow)
+      params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate, :borrow, :order)
     end
     
     def setFailFlag(val)

@@ -1,4 +1,5 @@
 $(document).on "turbolinks:load", ->
+#--------USE 4 FORM-----------
     setUp()
     getReturnDay()
     $("label[for='returnDate']").on 'dblclick', ->
@@ -227,7 +228,29 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'la busqueda por nombre: ' + $('#name').val() + ' no arrojo resutados'
+#--------USE 4 INDEX----------
+    $('.borrowedTbl thead tr th').on 'click', ->
+        option =  $(this).text()
+        $.ajax
+            type:'GET'
+            url:'/borrows/orBorrows'
+            data:
+                order:
+                    index:option
+            success: (data) ->
+                $('#borrowedTblBody').html(data)
+            error: (data) ->
 
+        # switch option
+        #     when 'Libro'
+        #         url = '/borrows/orBook'
+        #     when 'Subscriptor'
+        #         url = '/borrows/orSubs'
+        #     when 'Fecha salida'
+        #         url = '/borrows/orOut'
+        #     when 'Fecha Regreso'
+        #         url = '/borrows/orBack'
+#----HELP 2 FORM    
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'findByAcc'
       get 'getByName'
       get 'findByName'
+      get 'orBorrows'
       put 'setReturned'
     end
   end

@@ -1,0 +1,14 @@
+
+    <% @borrows.each do |borrowed| %>
+         <tr>
+            <td><%= borrowed.book.title %></td>
+            <td><%= borrowed.subscriptor.fullname %></td>
+            <td><%= borrowed.outDate %></td>
+            <td><%= borrowed.returnDate %></td>
+            <td><%= link_to setReturned_borrows_path({:borrow => borrowed.id}),
+                        :method => :put,
+                        data:{confirm:'Libro regresado?'} do %>
+                            <%= octicon 'repo-clone' %></td>
+                        <% end %>
+        </tr>
+    <% end %>
