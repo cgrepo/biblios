@@ -250,6 +250,20 @@ $(document).on "turbolinks:load", ->
         #         url = '/borrows/orOut'
         #     when 'Fecha Regreso'
         #         url = '/borrows/orBack'
+    $(document).on 'submit', 'form#searchSubscriptor',   (e) ->
+         e.preventDefault()
+         unless emptyInput($('#name'))
+            $.ajax
+                type:'GET'
+                url:'/borrows/srchSubName'
+                data:
+                    borrow:
+                        name: $('#name').val()
+                success: (data) ->
+                    $('#borrowedTblBody').html(data)
+                error: (data) ->
+             
+
 #----HELP 2 FORM    
 checkRows =(opt) ->
     if opt == 'subscriptors'

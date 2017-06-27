@@ -110,8 +110,8 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByAcc'}
     end    
   end
+#---------4 INDEx---------------------------------------------------
   def orBorrows
-    
     case params[:order][:index]
       when 'Libro'
         @borrows = Borrowed.where(returned:false).order(:book_id)
@@ -126,6 +126,15 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'ordered'}
     end 
   end
+  def srchSubName
+    subscriptors = []
+    subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:borrow][:name]+'%').pluck :id
+    @borrows = Borrowed.where(returned:false).where(:subscriptor_id => subscriptors)
+    respond_to do |format|
+      format.html {render :partial => 'ordered'}
+    end
+  end
+#----------PRIVATES-------------------------------------------------
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def borrow_paramsreturnDate

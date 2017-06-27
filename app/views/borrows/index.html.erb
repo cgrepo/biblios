@@ -9,6 +9,13 @@
             <%= link_to 'nuevo prestamo', new_borrow_path, class:'btn btn-default btn-block' %>
                 <%#= octicon 'diff-added' %>
         </div>
+        <div class='col-xs col-md-2'></div>
+        <div class='col-xs col-md-8'>
+            <%= bootstrap_form_tag   :html => {id:'searchSubscriptor'}, layout: :inline do |f| %>
+            <%= f.text_field_with_bootstrap :name, label:'Nombre ' %>
+            <%= f.submit 'BUSCAR' %>
+        <% end %>
+        </div>
     </div>
     <div class='row'>
         <div class='col-xs col-md-12'>
