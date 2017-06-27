@@ -126,10 +126,27 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'ordered'}
     end 
   end
-  def srchSubName
-    subscriptors = []
-    subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:borrow][:name]+'%').pluck :id
-    @borrows = Borrowed.where(returned:false).where(:subscriptor_id => subscriptors)
+  def srchFiltered
+    
+    getSubscriptorsIDs
+    
+    case params[:order][:index]
+      when 'Libro'
+        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:book_id)
+      when 'Subscriptor'
+        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:subscriptor_id)
+      when 'Fecha salida'
+        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:outDate)
+      when 'Fecha Regreso'
+        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:returnDate)
+    end
+    respond_to do |format|  
+      format.html {render :partial => 'ordered'}
+    end
+  end
+  def srchByName
+    getSubscriptorsIDs
+    @borrows = Borrowed.where(returned:false).where(:subscriptor_id => @subscriptors)
     respond_to do |format|
       format.html {render :partial => 'ordered'}
     end
@@ -143,5 +160,10 @@ class BorrowsController < ApplicationController
     
     def setFailFlag(val)
       @failFlag = val
+    end
+    
+    def getSubscriptorsIDs
+      @subscriptors = []
+      @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:order][:name]+'%').pluck :id
     end
 end

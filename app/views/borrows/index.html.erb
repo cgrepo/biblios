@@ -6,13 +6,25 @@
     </div>
     <div class='row'>
         <div class='col-xs col-md-2'>
+            <a class="btn btn-default btn-block clearFilters"><span class="glyphicon glyphicon-erase"></span> Limpiar filtros</a>
+        </div>
+        <div class='col-xs col-md-6'>
+            <%= bootstrap_form_tag   :html => {id:'selectSearchMethod'}, layout: :horizontal do |f| %>
+                <%= f.form_group do %>
+                    <%= f.select_with_bootstrap :filtro, [['Subscriptor','1'], ['Libros','2']], label:'Filtrar', label_class:'btn btn-default',include_blank:true %>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-xs col-md-2'>
             <%= link_to 'nuevo prestamo', new_borrow_path, class:'btn btn-default btn-block' %>
                 <%#= octicon 'diff-added' %>
         </div>
         <div class='col-xs col-md-6'>
-            <%= bootstrap_form_tag   :html => {id:'searchSubscriptor'}, layout: :horizontal do |f| %>
+            <%= bootstrap_form_tag   :html => {id:'searchData'}, layout: :horizontal do |f| %>
             <%= f.form_group do %>
-                <%= f.text_field_with_bootstrap :name, label:'Nombre' %>
+                <%= f.text_field_with_bootstrap :name, label:'Nombre', label_class:'btn btn-default' %>
             <% end %>
         </div>
         <div class='col-xs col-md-1'>

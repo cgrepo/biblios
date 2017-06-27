@@ -195,7 +195,7 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'El Numero de cuenta no fue encontrado'
-    $(document).on 'submit', 'form#commitSearchByName',   (e) ->
+    $(document).on 'submit', 'form#commitSearchByName', (e) ->
         e.preventDefault()
         unless emptyInput($('#name'))
             mySpin('s')
@@ -228,46 +228,45 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'la busqueda por nombre: ' + $('#name').val() + ' no arrojo resutados'
-#--------USE 4 INDEX----------
+#--------USE 4 INDEX------------------------------------------------------------
     $('.borrowedTbl thead tr th').on 'click', ->
-        option =  $(this).text()
-        $.ajax
-            type:'GET'
-            url:'/borrows/orBorrows'
-            data:
-                order:
-                    index:option
-            success: (data) ->
-                $('#borrowedTblBody').html(data)
-            error: (data) ->
-
-        # switch option
-        #     when 'Libro'
-        #         url = '/borrows/orBook'
-        #     when 'Subscriptor'
-        #         url = '/borrows/orSubs'
-        #     when 'Fecha salida'
-        #         url = '/borrows/orOut'
-        #     when 'Fecha Regreso'
-        #         url = '/borrows/orBack'
-    $(document).on 'submit', 'form#searchSubscriptor',   (e) ->
-         e.preventDefault()
-         unless emptyInput($('#name'))
-            mySpin('s')
-            $.ajax
-                type:'GET'
-                url:'/borrows/srchSubName'
-                data:
-                    borrow:
-                        name: $('#name').val()
-                success: (data) ->
-                    $('#borrowedTblBody').html(data)
-                    mySpin('f')
-                error: (data) ->
-                    mySpin('f')
-             
-
-#----HELP 2 FORM    
+        values = new Array()
+        values.push($(this).text())
+        if emptyFilters()
+            ajaxCalls('unfiltered',values)
+        else
+            values.push($('select[name="[filtro]"]').val())
+            values.push($('#name').val())
+            ajaxCalls('filtered',values)
+    $(document).on 'submit', 'form#searchData', (e) ->
+        e.preventDefault()
+        unless emptyInput($('#name'))
+            unless $('select[name="[filtro]"]').val() == ''
+                mySpin('s')
+                $.ajax
+                    type:'GET'
+                    url:'/borrows/srchByName'
+                    data:
+                        order:
+                            index: $('select[name="[filtro]"]').val()
+                            name: $('#name').val()
+                    success: (data) ->
+                        $('#borrowedTblBody').html(data)
+                        $('select[name="[filtro]"]').attr('disabled',true)
+                        $('#name').attr('disabled',true)
+                        mySpin('f')
+                    error: (data) ->
+                        mySpin('f')
+            else
+                alert 'debe seleccionar por que filtrar'
+    $('.clearFilters').on 'click', ->
+        $('#name').val()
+        location.reload(true)
+    $('label[for="filtro"]').on 'click', ->
+        $('select[name="[filtro]"]').attr('disabled',false)
+    $('label[for="name"]').on 'click', ->
+        $('#name').attr('disabled',false)
+#----HELP 2 FORM----------------------------------------------------------------  
 checkRows =(opt) ->
     if opt == 'subscriptors'
         return $('.tblSHolder tbody').children('tr').length;
@@ -336,7 +335,37 @@ emptyInput=($e)->
         return true
     else
         return false
-    
+emptyFilters=->
+    if $('select[name="[filtro]"]').val() == '' && $('#name').val() == ''
+        return true
+    else
+        return false
+
+ajaxCalls=(kind,values)->
+    switch kind 
+        when 'unfiltered'
+            $.ajax
+                type:'GET'
+                url:'/borrows/orBorrows'
+                data:
+                    order:
+                        index:values[0]
+                success: (data) ->
+                    $('#borrowedTblBody').html(data)
+                error: (data) ->
+        when 'filtered'
+            $.ajax
+                type:'GET'
+                url:'/borrows/srchFiltered'
+                data:
+                    order:
+                        index:values[0]
+                        filter:values[1]
+                        name:values[2]
+                success: (data) ->
+                    $('#borrowedTblBody').html(data)
+                error: (data) ->
+        
 # el siguiente codigo funciona pero se propara a todo por el submit , form afecta a todo el Rail Proyect
     # $(document).on 'submit', 'form', (e) ->
     #   e.preventDefault()
@@ -458,3 +487,12 @@ emptyInput=($e)->
     #$('input[type=radio]:not(:checked)')
     #$('input').not(':checked')
     #$('input[type=radio][name="[subscriptor_level]"]:not(:checked)').#not(':checked')
+        # switch option
+        #     when 'Libro'
+        #         url = '/borrows/orBook'
+        #     when 'Subscriptor'
+        #         url = '/borrows/orSubs'
+        #     when 'Fecha salida'
+        #         url = '/borrows/orOut'
+        #     when 'Fecha Regreso'
+        #         url = '/borrows/orBack'

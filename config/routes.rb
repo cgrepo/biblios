@@ -32,7 +32,8 @@ Rails.application.routes.draw do
       get 'getByName'
       get 'findByName'
       get 'orBorrows'
-      get 'srchSubName'
+      get 'srchByName'
+      get 'srchFiltered'
       put 'setReturned'
     end
   end
