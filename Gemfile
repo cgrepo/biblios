@@ -10,7 +10,7 @@ source 'https://rubygems.org'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-
+ruby '2.3.0'
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
