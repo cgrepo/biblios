@@ -250,6 +250,7 @@ $(document).on "turbolinks:load", ->
                         order:
                             index: $('select[name="[filtro]"]').val()
                             name: $('#name').val()
+                            
                     success: (data) ->
                         $('#borrowedTblBody').html(data)
                         $('select[name="[filtro]"]').attr('disabled',true)
@@ -272,19 +273,18 @@ checkRows =(opt) ->
         return $('.tblSHolder tbody').children('tr').length;
     else
         return $('.tblBHolder tbody').children('tr').length;
+Date.prototype.addDays=(days)->
+    newDate = new Date(this.valueOf())
+    newDate.setDate(d.getDate() + days)
+    return newDate
 getReturnDay=->
-    d = new Date()
-    rday = d.getDate()+5
-    rmonth = d.getMonth()+1
-    ryear = d.getFullYear()
-    rdate = new Date(rmonth+'/'+rday+'/'+ryear)
+    rdate = new Date()
+    rdate.setDate(rdate.getDate()+5)
     dayNames= ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
     if dayNames[rdate.getDay()]=='Sábado'
-        rday = rday + 2
-        rdate = new Date(rmonth+'/'+rday+'/'+ryear)
+        rdate.setDate(rdate.getDate()+2)
     if dayNames[rdate.getDay()]=='Domingo'
-        rday = rday + 1
-        rdate = new Date(rmonth+'/'+rday+'/'+ryear)
+        rdate.setDate(rdate.getDate()+1)
     $('input#outDate').attr('disabled',true)
     $('input#returnDate').attr('disabled',true)
     $('input#outDate').val($.datepicker.formatDate('dd/mm/yy ', new Date()))
