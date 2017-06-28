@@ -258,6 +258,7 @@ $(document).on "turbolinks:load", ->
                         mySpin('f')
                     error: (data) ->
                         mySpin('f')
+                        alert date
             else
                 alert 'debe seleccionar por que filtrar'
     $('.clearFilters').on 'click', ->
@@ -273,10 +274,6 @@ checkRows =(opt) ->
         return $('.tblSHolder tbody').children('tr').length;
     else
         return $('.tblBHolder tbody').children('tr').length;
-Date.prototype.addDays=(days)->
-    newDate = new Date(this.valueOf())
-    newDate.setDate(d.getDate() + days)
-    return newDate
 getReturnDay=->
     rdate = new Date()
     rdate.setDate(rdate.getDate()+5)
@@ -340,7 +337,6 @@ emptyFilters=->
         return true
     else
         return false
-
 ajaxCalls=(kind,values)->
     switch kind 
         when 'unfiltered'

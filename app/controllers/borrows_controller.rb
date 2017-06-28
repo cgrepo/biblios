@@ -110,7 +110,7 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByAcc'}
     end    
   end
-#---------4 INDEx---------------------------------------------------
+#---------4 INDEx--------------------------------------------------------------------------------------------------------------------------
   def orBorrows
     case params[:order][:index]
       when 'Libro'
@@ -127,26 +127,43 @@ class BorrowsController < ApplicationController
     end 
   end
   def srchFiltered
-    
-    getSubscriptorsIDs
-    
-    case params[:order][:index]
-      when 'Libro'
-        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:book_id)
-      when 'Subscriptor'
-        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:subscriptor_id)
-      when 'Fecha salida'
-        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:outDate)
-      when 'Fecha Regreso'
-        @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:returnDate)
+    if params[:order][:index] == '1'
+      getSubscriptorsIDs
+      case params[:order][:index]
+        when 'Libro'
+          @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:book_id)
+        when 'Subscriptor'
+          @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:subscriptor_id)
+        when 'Fecha salida'
+          @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:outDate)
+        when 'Fecha Regreso'
+          @borrows = Borrowed.where(returned:false).where(subscriptor_id:@subscriptors).order(:returnDate)
+      end
+    else
+      getBookIDs
+      case params[:order][:index]
+        when 'Libro'
+          @borrows = Borrowed.where(returned:false).where(book_id:@booksIDs).order(:book_id)
+        when 'Subscriptor'
+          @borrows = Borrowed.where(returned:false).where(book_id:@booksIDs).order(:subscriptor_id)
+        when 'Fecha salida'
+          @borrows = Borrowed.where(returned:false).where(book_id:@booksIDs).order(:outDate)
+        when 'Fecha Regreso'
+          @borrows = Borrowed.where(returned:false).where(book_id:@booksIDs).order(:returnDate)
+      end
     end
     respond_to do |format|  
       format.html {render :partial => 'ordered'}
     end
   end
   def srchByName
-    getSubscriptorsIDs
-    @borrows = Borrowed.where(returned:false).where(:subscriptor_id => @subscriptors)
+    if params[:order][:index] == '1'
+      getSubscriptorsIDs
+      @borrows = Borrowed.where(returned:false).where(:subscriptor_id => @subscriptors)
+    else
+      getBookIDs
+      @borrows = Borrowed.where(returned:false).where(:book_id => @booksIDs)
+    end
     respond_to do |format|
       format.html {render :partial => 'ordered'}
     end
@@ -165,5 +182,10 @@ class BorrowsController < ApplicationController
     def getSubscriptorsIDs
       @subscriptors = []
       @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:order][:name]+'%').pluck :id
+    end
+    
+    def getBookIDs
+      @booksIDs = []
+      @booksIDs = Book.where('title LIKE ?', '%'+params[:order][:name]+'%').pluck :id
     end
 end
