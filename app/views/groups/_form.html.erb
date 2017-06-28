@@ -1,58 +1,27 @@
-<%= bootstrap_form_for(@group, layout: :inline) do |f| %>
-  <% if @group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> No se pudo salvar!:</h2>
-      <ul>
-      <% @group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class='container' >
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-2 col-md-2'>
+<div class='container'>
+  <div class='row' >
+    <div class='col-xs col-md-3'></div>
+    <div class='col-xs col-md-7'>
+      <%= bootstrap_form_for(@group, layout: :horizontal) do |f| %>
+        <% if @group.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@group.errors.count, "error") %> No se pudo salvar!:</h2>
+              <ul>
+              <% @group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+        <% end %>
         <%= f.text_field_with_bootstrap :description, label:'Descripcion' %>
-      </div>
-      <div class='col-xs-2 col-md-2'>
         <%= f.number_field_with_bootstrap :books, label:'Libros' %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-2 col-md-2'>
         <%= f.text_field_with_bootstrap :penalty, label:'Penalizacion' %>
-      </div>
-      <div class='col-xs-2 col-md-2'>
-        <%= f.number_field_with_bootstrap :returnDay, label:'Fecha_De_Retorno' %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-2 col-md-2'>
+        <%= f.number_field_with_bootstrap :returnDay, label:'Fecha_Retorno' %>
         <%= f.number_field_with_bootstrap :renovation, label:'Renovacion' %>
-      </div>
-      <div class='col-xs-2 col-md-2'>
         <%= f.text_field_with_bootstrap :vigencyStar, label:'Inicio_vicencia', class:'form-control xdate' %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-2 col-md-2'>
         <%= f.text_field_with_bootstrap :vigencyEnd, label:'Fin_Vigencia', class:'form-control xdate' %>
-      </div>
-      <div class='col-xs-2 col-md-2'>
-        <br>
-        <%= f.submit 'EJECUTA',class:'btn btn-sm be-border_heroku btn-block' %>
-      </div>
+        <%= f.submit 'APLICAR',class:'btn btn-block be-border_heroku' %><br>
+      <% end %>
     </div>
   </div>
-<% end %>
-
-  <div class="field">
-    <%#= f.label :Biblioteca %><br>
-    <%#= f.text_field :library %>
-  </div>
-  
-
+</div>

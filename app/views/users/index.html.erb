@@ -15,7 +15,6 @@
               <th>Name</th>
               <th>Fullname</th>
               <th>Email</th>
-              <th>Password digest</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -25,13 +24,12 @@
                 <td><%= user.name %></td>
                 <td><%= user.fullname %></td>
                 <td><%= user.email %></td>
-                <td><%= user.password_digest %></td>
                 <td class='be-purple_strong'><%= link_to '', user, title:'mostrar', rel:'tooltip', 
-                        class:'btn btn-sm btn-block glyphicon glyphicon-file be-border_heroku' %></td>
+                        class:'btn btn-xs btn-block glyphicon glyphicon-file be-border_heroku' %></td>
                 <td class='be-purple_strong'><%= link_to '', edit_user_path(user), title:'editar', rel:'tooltip',
-                        class:'btn btn-sm btn-block glyphicon glyphicon-edit be-border_heroku' %></td>
+                        class:'btn btn-xs btn-block glyphicon glyphicon-edit be-border_heroku' %></td>
                 <td class='be-purple_strong'><%= link_to '', user, method: :delete, data: { confirm: 'Esta usted seguro?' }, title:'borrar', rel:'tooltip',
-                        class:'btn btn-sm btn-block glyphicon glyphicon-trash be-border_heroku' %></td>
+                        class:'btn btn-xs btn-block glyphicon glyphicon-trash be-border_heroku' %></td>
               </tr>
             <% end %>
           </tbody>
@@ -41,7 +39,7 @@
   </div>
   <div class='row'>
     <div class='col-xs-3 col-md-3'>
-      <%= link_to 'Nuevo Usuario', new_user_path, class:'btn btn-xs btn-default btn-block' %>
+      <%= link_to 'Nuevo Usuario', new_user_path, class:'btn btn-default btn-block' %>
     </div>
   </div>
 </div>

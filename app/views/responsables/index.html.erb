@@ -25,7 +25,7 @@
                 <td><%= responsable.fullname %></td>
                 <td><%= responsable.email %></td>
                 <td><%= responsable.telephone %></td>
-                <td><%= responsable.library.name %></td>
+                <td><%= responsable.library.name if responsable.library %></td>
                 <td><%= link_to '', responsable, title:'mostrar', rel:'tooltip', 
                     class:'btn btn-sm btn-default btn-block glyphicon glyphicon-file' %></td>
                 <td><%= link_to '', edit_responsable_path(responsable), title:'editar', rel:'tooltip',
@@ -41,7 +41,7 @@
   </div>
   <div class='row'>
     <div class='col-xs-3 col-md-3'>
-      <%= link_to 'Nuevo Responsable', new_responsable_path, class:'btn btn-xs btn-default btn-block' %>
+      <%= link_to 'Nuevo Responsable', new_responsable_path, class:'btn btn-default btn-block' %>
     </div>
   </div>
 </div>

@@ -1,10 +1,10 @@
 class BorrowsController < ApplicationController
-  def index
+  def index        
     @borrows = Borrowed.all.where(returned:false).order(:created_at).paginate(page: params[:page], per_page:20)
   end
   def new
   end
-  def setReturned
+  def setReturned  
     @borrow = Borrowed.find_by(:id => params[:borrow])
     @borrow.returned = true
     respond_to do |format|
@@ -15,7 +15,7 @@ class BorrowsController < ApplicationController
       end
     end
   end
-  def create
+  def create       
     @borrows = []
     setFailFlag(false)
     @subscriptor = Subscriptor.find_by(account:params[:account])
@@ -49,45 +49,45 @@ class BorrowsController < ApplicationController
         format.html { redirect_to borrows_url, notice: 'Prestamo(s) cargados correctamente' unless @failFlag }
     end
   end
-  def getByTitle
+  def getByTitle   
     respond_to do |format|
       format.html { render :partial => 'getByTitle'}
     end
   end
-  def findByTitle
+  def findByTitle  
     @books = Book.where("title LIKE ?",'%'+params[:borrow][:title]+'%')
     respond_to do |format|  
       format.html {render :partial => 'findByTitle'}
     end
   end
-  def getByISBN
+  def getByISBN    
     respond_to do |format|
       format.html { render :partial=> 'getByISBN'}
     end
   end
-  def findByISBN
+  def findByISBN   
     @book = Book.find_by(isbn:params[:borrow][:isbn])
     respond_to do |format|  
       format.html {render :partial => 'findByISBN'}
     end
   end
-  def getByAutor
+  def getByAutor   
     respond_to do |format|
       format.html { render :partial=> 'getByAutor'}
     end
   end
-  def findByAutor
+  def findByAutor  
     @books = Book.where("autor LIKE ?",'%'+params[:borrow][:autor]+'%')
     respond_to do |format|  
       format.html {render :partial => 'findByAutor'}
     end
   end
-  def getByName
+  def getByName    
     respond_to do |format|
       format.html { render :partial=> 'getByName'}
     end
   end
-  def findByName
+  def findByName   
     @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:borrow][:name]+'%')
     @rents = []
     @subscriptors.each do |subscriptor|
@@ -97,12 +97,12 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByName'}
     end
   end
-  def getByAcc
+  def getByAcc     
     respond_to do |format|
       format.html { render :partial=> 'getSubscriptorAcc'}
     end
   end
-  def findByAcc
+  def findByAcc    
     @subscriptor = Subscriptor.find_by account:params[:borrow][:account]
     @rents = []
     @rents << Borrowed.all.where(subscriptor:@subscriptor).where(returned:false).count
@@ -111,7 +111,7 @@ class BorrowsController < ApplicationController
     end    
   end
 #---------4 INDEx--------------------------------------------------------------------------------------------------------------------------
-  def orBorrows
+  def orBorrows    
     case params[:order][:index]
       when 'Libro'
         @borrows = Borrowed.where(returned:false).order(:book_id)
@@ -126,7 +126,7 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'ordered'}
     end 
   end
-  def srchFiltered
+  def srchFiltered 
     if params[:order][:index] == '1'
       getSubscriptorsIDs
       case params[:order][:index]
@@ -156,7 +156,7 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'ordered'}
     end
   end
-  def srchByName
+  def srchByName   
     if params[:order][:index] == '1'
       getSubscriptorsIDs
       @borrows = Borrowed.where(returned:false).where(:subscriptor_id => @subscriptors)
@@ -169,17 +169,17 @@ class BorrowsController < ApplicationController
     end
   end
 #----------PRIVATES-------------------------------------------------
-  private
+  private          
     # Never trust parameters from the scary internet, only allow the white list through.
-    def borrow_paramsreturnDate
+    def borrow_params      
       params.require(:borrow).permit(:title, :name, :account, :isbn, :autor, :outDate, :returnDate, :borrow, :order)
     end
     
-    def setFailFlag(val)
+    def setFailFlag(val)   
       @failFlag = val
     end
     
-    def getSubscriptorsIDs
+    def getSubscriptorsIDs 
       @subscriptors = []
       @subscriptors = Subscriptor.where("fullname LIKE ?",'%'+params[:order][:name]+'%').pluck :id
     end
