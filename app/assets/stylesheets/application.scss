@@ -68,6 +68,20 @@ tr th:last-child {
 .be-windows_gray7{
   background-color: #B0BDC9;
 }
+.full_borders{
+  border-top-style:solid;
+  border-bottom-style:solid;
+  border-right-style:solid;
+  border-left-style:solid;
+  border-left-width:thin;
+  border-right-width:thin;
+  border-top-width:thin;
+  border-bottom-width:thin;
+}
+.have_border_heroku{
+  border-color: #AF9BC5;
+}
+
 .be-border_heroku{
   //background: #89589C;
   background: #AF9BC5;
@@ -105,6 +119,7 @@ tr th:last-child {
   background-color: #efefef;
   color: black; 
 }
+
 //COPIED
 .row {
     margin-top: 20px;   

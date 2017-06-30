@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  resources :blockeds
-  resources :subscriptors do
-    get 'credential', to: 'subscriptors#buildCredential'
-  end
-  resources :groups
-  resources :schools
-  resources :responsables
-  resources :libraries
-  resources :users
+  resources :libraries, :responsables, :schools, :groups, :blockeds
+  resources :users 
+  # do
+  #   member do
+  #     get 'users/:id', action:'authem'
+  #   end
+  # end
   resources :sessions, only:[:new, :create, :destroy]
   get 'welcome/index'
   get "/login" => "sessions#new", as: "login"
@@ -16,6 +14,9 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   resources :books do
     resources :profiles, only: [:new, :create, :destroy, :edit, :update]
+  end
+  resources :subscriptors do
+    get 'credential', to: 'subscriptors#buildCredential'
   end
   resources :borrows, only: [ :index, :new, :create, :getByTitle,  :getByISBN,  :getByAutor,  
   :getByAcc,  :getByName, :findByTitle, :findByISBN, :findByAutor, :findByAcc, :findByName,
