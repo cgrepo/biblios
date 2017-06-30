@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :libraries, :responsables, :schools, :groups, :blockeds
-  resources :users 
-  # do
+  resources :users  do
+    collection do
+      get '/:id', action:'editPass', controller:'users', as:'editPass'
+    end
   #   member do
   #     get 'users/:id', action:'authem'
   #   end
-  # end
+  end
   resources :sessions, only:[:new, :create, :destroy]
   get 'welcome/index'
   get "/login" => "sessions#new", as: "login"

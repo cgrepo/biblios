@@ -16,8 +16,10 @@
                 <div class="pull-left round round-sm hollow blue">
                   <span class="glyphicon glyphicon-user"></span>
                 </div>
-                <span class="label">
-                    usuario <%=" " + current_user.name.upcase %>
+                <span class="label label-md label-primary">
+                    <%= link_to editPass_users_path(current_user), title:'editar', rel:'tooltip' do %>
+                        usuario <%=" " + current_user.name.upcase %>
+                    <% end %>
                 </span>
                 <span class="pull-right">
                 <%= link_to ' CUENTAS', users_path, class:'btn btn-xs be-border_heroku' %>
@@ -44,142 +46,5 @@
   </div>
 </section>
 <%= yield %>
-<!--
-    <div class="container">
-    
-        <div class="row">
-            <div class="col-sm-1">
-        		<div class="round round-sm hollow ">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm hollow blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm hollow orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm hollow green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-        	</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-        		<div class="round hollow">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round hollow blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round hollow orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round hollow green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-        	</div>
-        </div> 
-        <div class="row">
-            <div class="col-sm-1">
-            	<div class="round round-lg hollow ">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg hollow blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg hollow orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg hollow green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-        	</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-            	<div class="round round-sm">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-sm green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-        	</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-        		<div class="round">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-        	</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-            	<div class="round round-lg">
-                    <span class="glyphicon glyphicon-file"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg blue">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg orange">
-                    <span class="glyphicon glyphicon-tags"></span>
-                </div>
-        	</div>
-            <div class="col-sm-1">
-            	<div class="round round-lg green">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </div>
-                </div>
-        </div>
-    </div> 
--->
 </body>
 </html>

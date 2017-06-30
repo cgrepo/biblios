@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :auth]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :editPass]
 
   # GET /users
   # GET /users.json
@@ -40,21 +40,19 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-
     respond_to do |format|
-      if User.valid_password?(params[:user][:authme],@user)
-        if @user.update(user_params)
-          format.html { redirect_to @user, notice: 'Usuario actualizado satisfactoriamente!.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+    #   if User.valid_password?(params[:user][:authme],@user)
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Usuario actualizado satisfactoriamente!.' }
+        format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-        
+       format.html { render :edit }
+       format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
     end
   end
 
@@ -67,7 +65,9 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def editPass
+    byebug
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

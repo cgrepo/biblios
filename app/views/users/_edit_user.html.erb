@@ -1,29 +1,19 @@
-<div class='container'>
-  <div class='row'>
+<div class='col-xs col-md-4'></div>
+  <div class='col-xs col-md-4'>
     <%= bootstrap_form_for(@user) do |f| %>
-    <div class='col-xs col-md-4'></div>
-      <div class='col-xs col-md-4'>
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> No se pudo salvar!:</h2>
-            <ul>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> No se pudo salvar!:</h2>
+          <ul>
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
-            </ul>
-          </div>
+          </ul>
+        </div>
         <% end %>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-xs-4 col-md-4'></div>
-      <div class='col-xs-4 col-md-4'>
-        <%= f.password_field_with_bootstrap :authme, label:'Password Anterior' %>
         <%= f.text_field_with_bootstrap :fullname, label:'Nombre Completo' %>
         <%= f.email_field_with_bootstrap :email, label:'Correo electronico' %>
-        <%= f.password_field_with_bootstrap :password %>
         <%= f.submit 'APLICAR', class:'btn btn-md be-border_heroku btn-block' %>
-      </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+
