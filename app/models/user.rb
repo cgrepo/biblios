@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
     has_secure_password
     validates 	:name, :fullname, :email , presence: true
+    validates_confirmation_of :password
     
     def self.valid_password?(pretended,usr)
       byebug

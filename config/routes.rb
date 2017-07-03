@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :libraries, :responsables, :schools, :groups, :blockeds
   resources :users  do
     collection do
-      get '/:id', action:'editPass', controller:'users', as:'editPass'
+      get 'editPass/:id', action:'editPass', controller:'users', as:'editPass'
+      post 'updatePass/:id', action:'updatePass', controller:'users', as:'updatePass'
     end
   #   member do
   #     get 'users/:id', action:'authem'
