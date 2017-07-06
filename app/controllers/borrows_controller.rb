@@ -97,13 +97,14 @@ class BorrowsController < ApplicationController
       format.html {render :partial => 'findSubByName'}
     end
   end
-  def getByAcc     
+  def getByAcc
     respond_to do |format|
       format.html { render :partial=> 'getSubscriptorAcc'}
     end
   end
-  def findByAcc    
-    @subscriptor = Subscriptor.find_by account:params[:borrow][:account]
+  def findByAcc
+
+    @subscriptor = Subscriptor.find_by(account:params[:borrow][:account])
     @rents = []
     @rents << Borrowed.all.where(subscriptor:@subscriptor).where(returned:false).count
     respond_to do |format|  

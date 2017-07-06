@@ -71,7 +71,7 @@ $(document).on "turbolinks:load", ->
             success: (data) ->
                 $('#search_left_holder').empty()
                 $('#search_left_holder').append(data)
-    $(document).on 'submit', 'form#commitSearchByTitle',  (e) ->
+    $(document).on 'submit', 'form#commitSearchByTitle',(e) ->
         e.preventDefault()
         unless emptyInput($('#title'))
             mySpin('s')
@@ -102,7 +102,7 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'El Numero de cuenta no fue encontrado'
-    $(document).on 'submit', 'form#commitSearchByISBN',   (e) ->
+    $(document).on 'submit', 'form#commitSearchByISBN',(e) ->
         e.preventDefault()
         unless emptyInput($('#isbn'))
             mySpin('s')
@@ -133,7 +133,7 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'Datos no encontrados'
-    $(document).on 'submit', 'form#commitSearchByAutor',  (e) ->
+    $(document).on 'submit', 'form#commitSearchByAutor',(e) ->
         e.preventDefault()
         unless emptyInput($('#autor'))
             mySpin('s')
@@ -165,7 +165,7 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'Datos no encontrados'
-    $(document).on 'submit', 'form#commitSearchBySubAcc', (e) ->
+    $(document).on 'submit', 'form#commitSearchBySubAcc',(e) ->
         e.preventDefault()
         unless emptyInput($('#account'))
             mySpin('s')
@@ -174,7 +174,7 @@ $(document).on "turbolinks:load", ->
                 url:'/borrows/findByAcc'
                 data:
                     borrow:
-                        account: $('#acct').val()
+                        account: $('#account').val()
                 success: (data) ->
                     $('#modal-window').html(data)
                     $('#modal-window').modal('show')
@@ -195,7 +195,7 @@ $(document).on "turbolinks:load", ->
                     console.log data
                     mySpin('f')
                     alert 'El Numero de cuenta no fue encontrado'
-    $(document).on 'submit', 'form#commitSearchByName', (e) ->
+    $(document).on 'submit', 'form#commitSearchByName',(e) ->
         e.preventDefault()
         unless emptyInput($('#name'))
             mySpin('s')

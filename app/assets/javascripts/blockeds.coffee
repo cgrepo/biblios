@@ -1,3 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "turbolinks:load", ->
+    # img = document.createElement('img')
+    # img.src = '//brutelogic.com.br/brutality.jpg'
+    # document.body.insertBefore img, document.body.firstChild
+    # new Audio('//brutelogic.com.br/brutality.mp3').play()
