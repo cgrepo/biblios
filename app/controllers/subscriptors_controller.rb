@@ -25,7 +25,7 @@ class SubscriptorsController < ApplicationController
   # POST /subscriptors.json
   def create
     @subscriptor = Subscriptor.new(subscriptor_params)
-
+    byebug
     respond_to do |format|
       if @subscriptor.save
         format.html { redirect_to @subscriptor, notice: 'Subscriptor creado satisfactoriamente!.' }
